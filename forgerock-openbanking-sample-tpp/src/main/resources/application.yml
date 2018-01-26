@@ -1,0 +1,67 @@
+#
+# The contents of this file are subject to the terms of the Common Development and
+#  Distribution License (the License). You may not use this file except in compliance with the
+#  License.
+#
+#  You can obtain a copy of the License at https://forgerock.org/license/CDDLv1.0.html. See the License for the
+#  specific language governing permission and limitations under the License.
+#
+#  When distributing Covered Software, include this CDDL Header Notice in each file and include
+#  the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+#  Header, with the fields enclosed by brackets [] replaced by your own identifying
+#  information: "Portions copyright [year] [name of copyright owner]".
+#
+#  Copyright 2018 ForgeRock AS.
+#
+#
+
+spring:
+  application:
+    name: sample-tpp
+  hostname: tpp.sample.ob.forgerock.financial
+  jackson:
+    default-property-inclusion: NON_NULL
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+logging:
+  level:
+    com:
+      forgerock:
+        openbanking:
+          sample: DEBUG
+
+server:
+    servlet:
+      contextPath: /open-banking/v1.1/
+    port: 7777
+    ssl:
+        enabled: true
+        key-alias: transport-1xfkrciqohnbwjou9z72x5 #<-- your software ID !! IN LOWER CASE !!
+        key-password: changeit
+        key-store: classpath:keystore/keystore.p12
+        key-store-password: changeit
+        ob-trust-store: classpath:keystore/truststore.p12
+        ob-trust-store-password: changeit
+
+tpp:
+  root: https://${spring.hostname}:${server.port}/open-banking/v1.1
+  certificate:
+    transport:
+      alias: transport-1xfkrciqohnbwjou9z72x5 #<-- your software ID !! IN LOWER CASE !!
+    signature:
+      alias: signing-1xfkrciqohnbwjou9z72x5 #<-- your software ID !! IN LOWER CASE !!
+      algorithm: RS256
+      kid: 8h_w0rFrMqyJnNy2aQT1BDk8jeU  #<-- the signing key ID
+      password: changeit
+  softwareId: 1xFkRciqOHnBWjOU9z72X5 #<-- your software ID
+  aisp:
+    redirect_uri: https://google.fr   #<-- replace this by the redirect uri you have setup in your SSA
+  pisp:
+    redirect_uri: https://google.fr  #<-- replace this by the redirect uri you have setup in your SSA
+  openbanking:
+    version: v1.1
+  ssa: classpath:ob/ssa.jwt
+
+preregisteredTpp: classpath:backup/preregisteredForgeTppSample.json

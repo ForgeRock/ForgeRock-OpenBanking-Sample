@@ -1,0 +1,177 @@
+{
+  "id": "5a6b1f8d32a9fb52c9ccc3b4",
+  "name": "ForgeRock Financial",
+  "logo": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+  "financialId": "RGsbN8iAsMh74sOXhk",
+  "ssa": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkVxYzBQSnlJVDEzS3NNQ3Z5aDJyQm9aeHlxWUhuM2J3MllkMlhFdF90R2MiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE1MTY5MjEwMjUsImlzcyI6Ik9wZW5CYW5raW5nIEx0ZCIsImp0aSI6IjJVNXVGVEFRTlB5OTRhaGFJN0pQejUiLCJvYl9yZWdpc3RyeV90b3MiOiJodHRwczovL3JlZ2lzdHJ5Lm9wZW5iYW5raW5nLm9yZy51ay90b3MuaHRtbCIsIm9yZ19jb250YWN0cyI6W10sIm9yZ19jcmVhdGVkX2RhdGUiOm51bGwsIm9yZ19pZCI6InNPY1BYVmZNZ0VIR3Myd3B2QSIsIm9yZ19qd2tzX2VuZHBvaW50IjoiaHR0cHM6Ly9rZXlzdG9yZS5taXQub3BlbmJhbmtpbmcucWEvc09jUFhWZk1nRUhHczJ3cHZBL3NPY1BYVmZNZ0VIR3Myd3B2QS5qd2tzIiwib3JnX2p3a3NfcmV2b2tlZF9lbmRwb2ludCI6Imh0dHBzOi8va2V5c3RvcmUubWl0Lm9wZW5iYW5raW5nLnFhL3NPY1BYVmZNZ0VIR3Myd3B2QS9yZXZva2VkL3NPY1BYVmZNZ0VIR3Myd3B2QS5qd2tzIiwib3JnX2xhc3RfbW9kaWZpZWRfZGF0ZSI6bnVsbCwib3JnX25hbWUiOiJGb3JnZVJvY2sgQmFuayBUUFAgLSBBSVNQIGFuZCBQSVNQIiwib3JnX3N0YXR1cyI6IkFjdGl2ZSIsIm9yZ2FuaXNhdGlvbl9jb21wZXRlbnRfYXV0aG9yaXR5X2NsYWltcyI6eyJhdXRob3Jpc2F0aW9ucyI6W3sibWVtYmVyX3N0YXRlIjoiR0IiLCJyb2xlcyI6WyJBSVNQIiwiUElTUCJdfV0sImF1dGhvcml0eV9pZCI6IkZDQSIsInJlZ2lzdHJhdGlvbl9pZCI6IlJlZ0ZvcmdlUm9ja1BsQzAwMyIsInN0YXR1cyI6IkFjdGl2ZSJ9LCJzb2Z0d2FyZV9jbGllbnRfZGVzY3JpcHRpb24iOiJBIFRQUCBzYW1wbGUgZGV2ZWxvcGVkIGJ5IEZvcmdlUm9jayIsInNvZnR3YXJlX2NsaWVudF9pZCI6IjF4RmtSY2lxT0huQldqT1U5ejcyWDUiLCJzb2Z0d2FyZV9jbGllbnRfbmFtZSI6ImZvcmdlc2FtcGxlLXRwcCIsInNvZnR3YXJlX2NsaWVudF91cmkiOiJub3QgaW1wbGVtZW50ZWQiLCJzb2Z0d2FyZV9lbnZpcm9ubWVudCI6Im1pdCIsInNvZnR3YXJlX2lkIjoiMXhGa1JjaXFPSG5CV2pPVTl6NzJYNSIsInNvZnR3YXJlX2p3a3NfZW5kcG9pbnQiOiJodHRwczovL2tleXN0b3JlLm1pdC5vcGVuYmFua2luZy5xYS9zT2NQWFZmTWdFSEdzMndwdkEvMXhGa1JjaXFPSG5CV2pPVTl6NzJYNS5qd2tzIiwic29mdHdhcmVfandrc19yZXZva2VkX2VuZHBvaW50IjoiaHR0cHM6Ly9rZXlzdG9yZS5taXQub3BlbmJhbmtpbmcucWEvc09jUFhWZk1nRUhHczJ3cHZBL3Jldm9rZWQvMXhGa1JjaXFPSG5CV2pPVTl6NzJYNS5qd2tzIiwic29mdHdhcmVfbG9nb191cmkiOiJub3QgaW1wbGVtZW50ZWQiLCJzb2Z0d2FyZV9tb2RlIjoiVGVzdCIsInNvZnR3YXJlX29uX2JlaGFsZl9vZl9vcmciOiJzT2NQWFZmTWdFSEdzMndwdkEiLCJzb2Z0d2FyZV9wb2xpY3lfdXJpIjoiaHR0cHM6Ly9wb2xpY3kub2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbCIsInNvZnR3YXJlX3JlZGlyZWN0X3VyaXMiOlsiaHR0cHM6Ly9nb29nbGUuZnIiLCJodHRwczovL3JlZGlyZWN0LnRwcC5zYW1wbGUub2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbCJdLCJzb2Z0d2FyZV9yb2xlcyI6WyJQSVNQIiwiQUlTUCJdLCJzb2Z0d2FyZV90b3NfdXJpIjoiaHR0cHM6Ly90ZXJtcy5vYi5mb3JnZXJvY2suZmluYW5jaWFsIiwic29mdHdhcmVfdmVyc2lvbiI6MS4xfQ.ERq-jbdREsKk_mptTIdwqPqzG58azjkqypkPTOskd7ID_hJkUq8oG6N78JTAF5z8JGnmiGeYcACQ_Ekf65gGAmBHpmMLKxsIeCtXZYnknFwZF264pr7afN4_ovW69ivDQ240Ink9Sh1Eie9YQLwzTVsQ64JuLxQm4dB8BtZhDIMWNdYee7JyKAW_lzGGt6odrdJ1KrzwGwlVNl3dhbfJYigC2VIkk7MYmHbASwov0hnYthlff9oadOwiWJBi_h-u4RUi78Vf73LJueXk3NU8tc6oLylTfTszJv1KpEAMsvWL6SQ67J3DzQBwRJxoW50kifiPdmRw_Jwk86GQdFWzXw",
+  "discoveryEndpoint": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/discovery",
+  "oidcRegistrationResponse": {
+    "scopes": [
+      "openid",
+      "accounts",
+      "payments"
+    ],
+    "redirect_uris": [
+      "https://google.fr",
+      "https://google.fr"
+    ],
+    "response_types": [
+      "code",
+      "token",
+      "code id_token"
+    ],
+    "application_type": "web",
+    "client_name": "forgesample-tpp",
+    "jwks_uri": "https://keystore.mit.openbanking.qa/sOcPXVfMgEHGs2wpvA/1xFkRciqOHnBWjOU9z72X5.jwks",
+    "subject_type": "public",
+    "id_token_signed_response_alg": "ES256",
+    "id_token_encrypted_response_alg": "RSA1_5",
+    "id_token_encrypted_response_enc": "A128CBC_HS256",
+    "userinfo_signed_response_alg": "",
+    "userinfo_encrypted_response_alg": "",
+    "request_object_signing_alg": "RS256",
+    "request_object_encryption_alg": "RSA-OAEP-256",
+    "request_object_encryption_enc": "A128CBC-HS256",
+    "token_endpoint_auth_method": "private_key_jwt",
+    "token_endpoint_auth_signing_alg": "RS256",
+    "default_max_age": "1",
+    "software_statement": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkVxYzBQSnlJVDEzS3NNQ3Z5aDJyQm9aeHlxWUhuM2J3MllkMlhFdF90R2MiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE1MTY5MjEwMjUsImlzcyI6Ik9wZW5CYW5raW5nIEx0ZCIsImp0aSI6IjJVNXVGVEFRTlB5OTRhaGFJN0pQejUiLCJvYl9yZWdpc3RyeV90b3MiOiJodHRwczovL3JlZ2lzdHJ5Lm9wZW5iYW5raW5nLm9yZy51ay90b3MuaHRtbCIsIm9yZ19jb250YWN0cyI6W10sIm9yZ19jcmVhdGVkX2RhdGUiOm51bGwsIm9yZ19pZCI6InNPY1BYVmZNZ0VIR3Myd3B2QSIsIm9yZ19qd2tzX2VuZHBvaW50IjoiaHR0cHM6Ly9rZXlzdG9yZS5taXQub3BlbmJhbmtpbmcucWEvc09jUFhWZk1nRUhHczJ3cHZBL3NPY1BYVmZNZ0VIR3Myd3B2QS5qd2tzIiwib3JnX2p3a3NfcmV2b2tlZF9lbmRwb2ludCI6Imh0dHBzOi8va2V5c3RvcmUubWl0Lm9wZW5iYW5raW5nLnFhL3NPY1BYVmZNZ0VIR3Myd3B2QS9yZXZva2VkL3NPY1BYVmZNZ0VIR3Myd3B2QS5qd2tzIiwib3JnX2xhc3RfbW9kaWZpZWRfZGF0ZSI6bnVsbCwib3JnX25hbWUiOiJGb3JnZVJvY2sgQmFuayBUUFAgLSBBSVNQIGFuZCBQSVNQIiwib3JnX3N0YXR1cyI6IkFjdGl2ZSIsIm9yZ2FuaXNhdGlvbl9jb21wZXRlbnRfYXV0aG9yaXR5X2NsYWltcyI6eyJhdXRob3Jpc2F0aW9ucyI6W3sibWVtYmVyX3N0YXRlIjoiR0IiLCJyb2xlcyI6WyJBSVNQIiwiUElTUCJdfV0sImF1dGhvcml0eV9pZCI6IkZDQSIsInJlZ2lzdHJhdGlvbl9pZCI6IlJlZ0ZvcmdlUm9ja1BsQzAwMyIsInN0YXR1cyI6IkFjdGl2ZSJ9LCJzb2Z0d2FyZV9jbGllbnRfZGVzY3JpcHRpb24iOiJBIFRQUCBzYW1wbGUgZGV2ZWxvcGVkIGJ5IEZvcmdlUm9jayIsInNvZnR3YXJlX2NsaWVudF9pZCI6IjF4RmtSY2lxT0huQldqT1U5ejcyWDUiLCJzb2Z0d2FyZV9jbGllbnRfbmFtZSI6ImZvcmdlc2FtcGxlLXRwcCIsInNvZnR3YXJlX2NsaWVudF91cmkiOiJub3QgaW1wbGVtZW50ZWQiLCJzb2Z0d2FyZV9lbnZpcm9ubWVudCI6Im1pdCIsInNvZnR3YXJlX2lkIjoiMXhGa1JjaXFPSG5CV2pPVTl6NzJYNSIsInNvZnR3YXJlX2p3a3NfZW5kcG9pbnQiOiJodHRwczovL2tleXN0b3JlLm1pdC5vcGVuYmFua2luZy5xYS9zT2NQWFZmTWdFSEdzMndwdkEvMXhGa1JjaXFPSG5CV2pPVTl6NzJYNS5qd2tzIiwic29mdHdhcmVfandrc19yZXZva2VkX2VuZHBvaW50IjoiaHR0cHM6Ly9rZXlzdG9yZS5taXQub3BlbmJhbmtpbmcucWEvc09jUFhWZk1nRUhHczJ3cHZBL3Jldm9rZWQvMXhGa1JjaXFPSG5CV2pPVTl6NzJYNS5qd2tzIiwic29mdHdhcmVfbG9nb191cmkiOiJub3QgaW1wbGVtZW50ZWQiLCJzb2Z0d2FyZV9tb2RlIjoiVGVzdCIsInNvZnR3YXJlX29uX2JlaGFsZl9vZl9vcmciOiJzT2NQWFZmTWdFSEdzMndwdkEiLCJzb2Z0d2FyZV9wb2xpY3lfdXJpIjoiaHR0cHM6Ly9wb2xpY3kub2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbCIsInNvZnR3YXJlX3JlZGlyZWN0X3VyaXMiOlsiaHR0cHM6Ly9nb29nbGUuZnIiLCJodHRwczovL3JlZGlyZWN0LnRwcC5zYW1wbGUub2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbCJdLCJzb2Z0d2FyZV9yb2xlcyI6WyJQSVNQIiwiQUlTUCJdLCJzb2Z0d2FyZV90b3NfdXJpIjoiaHR0cHM6Ly90ZXJtcy5vYi5mb3JnZXJvY2suZmluYW5jaWFsIiwic29mdHdhcmVfdmVyc2lvbiI6MS4xfQ.ERq-jbdREsKk_mptTIdwqPqzG58azjkqypkPTOskd7ID_hJkUq8oG6N78JTAF5z8JGnmiGeYcACQ_Ekf65gGAmBHpmMLKxsIeCtXZYnknFwZF264pr7afN4_ovW69ivDQ240Ink9Sh1Eie9YQLwzTVsQ64JuLxQm4dB8BtZhDIMWNdYee7JyKAW_lzGGt6odrdJ1KrzwGwlVNl3dhbfJYigC2VIkk7MYmHbASwov0hnYthlff9oadOwiWJBi_h-u4RUi78Vf73LJueXk3NU8tc6oLylTfTszJv1KpEAMsvWL6SQ67J3DzQBwRJxoW50kifiPdmRw_Jwk86GQdFWzXw",
+    "client_id": "8f5bb6fa-96b0-46a3-ac9e-36c611036326",
+    "client_secret": "0f61081e-4618-4416-bcbc-c1a64cd473aa",
+    "registration_access_token": "eyJ0eXAiOiJKV1QiLCJ6aXAiOiJOT05FIiwia2lkIjoiRm9sN0lwZEtlTFptekt0Q0VnaTFMRGhTSXpNPSIsImFsZyI6IkVTMjU2In0.eyJzdWIiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJhdWRpdFRyYWNraW5nSWQiOiI4YWIyNmI2NC1kYmVkLTQ5Y2EtYmZjMy05NDJmYzJhZGQxODciLCJpc3MiOiJodHRwczovL2FzLmFzcHNwLmRldi1vYi5mb3JnZXJvY2suZmluYW5jaWFsOjg0NDMvb2F1dGgyL29wZW5iYW5raW5nIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiNDA3YjkzMjQtNTA0NS00YmNkLTkwMjQtN2I5Y2Q2YzAxNGZjIiwiYXVkIjoiOGY1YmI2ZmEtOTZiMC00NmEzLWFjOWUtMzZjNjExMDM2MzI2IiwibmJmIjoxNTE2OTY5ODY5LCJzY29wZSI6W10sImF1dGhfdGltZSI6MTUxNjk2OTg2OSwicmVhbG0iOiIvb3BlbmJhbmtpbmciLCJleHAiOjE1MTY5NzM0NjksImlhdCI6MTUxNjk2OTg2OSwiZXhwaXJlc19pbiI6MzYwMCwianRpIjoiM2ZiZmZmNzgtZGI3Zi00N2ExLWFmODAtMDYxNjU3YmIyZjI0In0.YtwkgD-ytg8nOZezciWRpv22eNPj8EQONlay0A_zFjiyPyBBFiv00FGmqGZNu9fWVXaT90tuqoUfVhTjSClLQQ",
+    "registration_client_uri": "https://as.aspsp.dev-ob.forgerock.financial:8443/oauth2/register?client_id=8f5bb6fa-96b0-46a3-ac9e-36c611036326",
+    "client_secret_expires_at": "0"
+  },
+  "oidcDiscoveryResponse": {
+    "issuer": "https://as.aspsp.dev-ob.forgerock.financial:8443/oauth2/openbanking",
+    "authorization_endpoint": "https://as.aspsp.dev-ob.forgerock.financial:8443/oauth2/realms/root/realms/openbanking/authorize",
+    "token_endpoint": "https://as.aspsp.dev-ob.forgerock.financial:8443/oauth2/realms/root/realms/openbanking/access_token",
+    "userinfo_endpoint": "https://as.aspsp.dev-ob.forgerock.financial:8443/oauth2/realms/root/realms/openbanking/userinfo",
+    "jwks_uri": "https://as.aspsp.dev-ob.forgerock.financial:8443/oauth2/realms/root/realms/openbanking/connect/jwk_uri",
+    "registration_endpoint": "https://as.aspsp.dev-ob.forgerock.financial:8443/oauth2/realms/root/realms/openbanking/register",
+    "scopes_supported": [
+      "address",
+      "phone",
+      "openid",
+      "payments",
+      "profile",
+      "accounts",
+      "email"
+    ],
+    "response_types_supported": [
+      "code token id_token",
+      "code",
+      "code id_token",
+      "device_code",
+      "id_token",
+      "code token",
+      "token",
+      "token id_token"
+    ],
+    "acr_values_supported": [
+      "urn:openbanking:psd2:sca",
+      "urn:openbanking:psd2:ca"
+    ],
+    "subject_types_supported": [
+      "public"
+    ],
+    "id_token_signing_alg_values_supported": [
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512"
+    ],
+    "id_token_encryption_alg_values_supported": [
+      "RSA-OAEP",
+      "RSA-OAEP-256",
+      "A128KW",
+      "A256KW",
+      "RSA1_5",
+      "dir",
+      "A192KW"
+    ],
+    "id_token_encryption_enc_values_supported": [
+      "A256GCM",
+      "A192GCM",
+      "A128GCM",
+      "A128CBC-HS256",
+      "A192CBC-HS384",
+      "A256CBC-HS512"
+    ],
+    "request_object_signing_alg_values_supported": [
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512"
+    ],
+    "request_object_encryption_alg_values_supported": [
+      "RSA-OAEP",
+      "RSA-OAEP-256",
+      "A128KW",
+      "RSA1_5",
+      "A256KW",
+      "dir",
+      "A192KW"
+    ],
+    "request_object_encryption_enc_values_supported": [
+      "A256GCM",
+      "A192GCM",
+      "A128GCM",
+      "A128CBC-HS256",
+      "A192CBC-HS384",
+      "A256CBC-HS512"
+    ],
+    "token_endpoint_auth_methods_supported": [
+      "client_secret_post",
+      "private_key_jwt",
+      "client_secret_basic"
+    ],
+    "claims_supported": [
+      "acr",
+      "zoneinfo",
+      "openbanking_intent_id",
+      "address",
+      "profile",
+      "name",
+      "phone_number",
+      "given_name",
+      "locale",
+      "family_name",
+      "email"
+    ],
+    "claims_parameter_supported": true,
+    "request_parameter_supported": true,
+    "request_uri_parameter_supported": true
+  },
+  "discoveryAPILinksPayment": {
+    "CreateSingleImmediatePayment": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/payments",
+    "GetSingleImmediatePayment": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/payments/{PaymentId}",
+    "CreatePaymentSubmission": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/payment-submissions",
+    "GetPaymentSubmission": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/payment-submissions/{PaymentSubmissionId}"
+  },
+  "discoveryAPILinksAccount": {
+    "CreateAccountRequest": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/account-requests",
+    "GetAccountRequest": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/account-requests/{AccountRequestId}",
+    "DeleteAccountRequest": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/account-requests/{AccountRequestId}",
+    "GetAccounts": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/accounts",
+    "GetAccount": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/accounts/{AccountId}",
+    "GetAccountTransactions": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/accounts/{AccountId}/transactions",
+    "GetAccountBeneficiaries": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/accounts/{AccountId}/beneficiaries",
+    "GetAccountBalances": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/accounts/{AccountId}/balances",
+    "GetAccountDirectDebits": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/accounts/{AccountId}/direct-debits",
+    "GetAccountStandingOrders": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/accounts/{AccountId}/standing-orders",
+    "GetAccountProduct": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/accounts/{AccountId}/product",
+    "GetStandingOrders": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/standing-orders",
+    "GetDirectDebits": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/direct-debits",
+    "GetBeneficiaries": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/beneficiaries",
+    "GetTransactions": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/transactions",
+    "GetBalances": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/balances",
+    "GetProducts": "https://rs.aspsp.dev-ob.forgerock.financial:8078/open-banking/v1.1/products"
+  }
+}

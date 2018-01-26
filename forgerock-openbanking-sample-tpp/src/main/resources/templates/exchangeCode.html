@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<!--
+ * The contents of this file are subject to the terms of the Common Development and
+ * Distribution License (the License). You may not use this file except in compliance with the
+ * License.
+ *
+ * You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
+ * specific language governing permission and limitations under the License.
+ *
+ * When distributing Covered Software, include this CDDL Header Notice in each file and include
+ * the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+ * Header, with the fields enclosed by brackets [] replaced by your own identifying
+ * information: "Portions copyright [year] [name of copyright owner]".
+ *
+ * Copyright 2018 ForgeRock AS.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ForgeRock TPP sample page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<input type="hidden" id="tppExchangeCodeUri" th:value="${tppExchangeCodeUri}"/>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+    function getParameters(location) {
+        if (typeof location === 'undefined') {
+            location = window.location;
+        }
+        var hashParams = new (function Params() {
+        })();
+        if (location.hash.length === 0) {
+            return hashParams;
+        }
+        ;
+        var hashArray = location.hash.substring(1).split('&');
+        for (var i in hashArray) {
+            var keyValPair = hashArray[i].split('=');
+            hashParams[keyValPair[0]] = keyValPair[1];
+        }
+        return hashParams;
+    }
+
+    var tppExchangeCodeUri = $('#tppExchangeCodeUri').val();
+
+    if (window.location.hash) {
+        var params = getParameters(window.location);
+        window.location.replace(tppExchangeCodeUri + "?code=" + params["code"] +
+            "&id_token=" + params["id_token"] + "&state=" + params["state"]);
+    }
+
+</script>
+
+
+</html>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#
+# The contents of this file are subject to the terms of the Common Development and
+#  Distribution License (the License). You may not use this file except in compliance with the
+#  License.
+#
+#  You can obtain a copy of the License at https://forgerock.org/license/CDDLv1.0.html. See the License for the
+#  specific language governing permission and limitations under the License.
+#
+#  When distributing Covered Software, include this CDDL Header Notice in each file and include
+#  the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+#  Header, with the fields enclosed by brackets [] replaced by your own identifying
+#  information: "Portions copyright [year] [name of copyright owner]".
+#
+#  Copyright 2018 ForgeRock AS.
+#
+#
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>ForgeRock OpenBanking Reference Implementation - Sample</name>
+    <groupId>com.forgerock.openbanking.sample</groupId>
+    <artifactId>forgerock-openbanking-sample</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.M7</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <organization>
+        <name>ForgeRock</name>
+        <url>http://www.forgerock.org</url>
+    </organization>
+    <url>http://www.forgerock.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <spring-cloud.version>Finchley.M5</spring-cloud.version>
+        <netflix.version>1.4.0.RELEASE</netflix.version>
+
+        <ob.sdk.version>1.1.0.2</ob.sdk.version>
+
+        <jodatime.version>2.9.9</jodatime.version>
+        <apache.version>4.5.3</apache.version>
+        <jersey.version>2.25.1</jersey.version>
+        <junit.version>4.12</junit.version>
+        <jwt.nimbus.version>5.1</jwt.nimbus.version>
+        <bouncycastle.version>1.58</bouncycastle.version>
+        <slf4j.version>1.7.6</slf4j.version>
+        <swagger.version>2.7.0</swagger.version>
+        <swagger.ui.version>2.7.0</swagger.ui.version>
+        <springfox-version>2.6.1</springfox-version>
+        <shedlock.version>0.16.1</shedlock.version>
+        <javax.version>1.1.0.Final</javax.version>
+        <tunyk.version>1.0</tunyk.version>
+        <netflix.version>1.4.0.RELEASE</netflix.version>
+        <logstash.version>4.11</logstash.version>
+    </properties>
+
+    <modules>
+        <module>forgerock-openbanking-sample-tpp</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- OpenBanking -->
+            <dependency>
+                <groupId>com.forgerock.openbanking</groupId>
+                <artifactId>forgerock-openbanking-commons</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>uk.org.openbanking</groupId>
+                <artifactId>openbanking-sdk</artifactId>
+                <version>${ob.sdk.version}</version>
+            </dependency>
+
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Netflix -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zuul</artifactId>
+                <version>${netflix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka</artifactId>
+                <version>${netflix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka-server</artifactId>
+                <version>${netflix.version}</version>
+            </dependency>
+
+            <!-- JWT and keys -->
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${jwt.nimbus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+
+            <!-- Other -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${jodatime.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>${jersey.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.javacrumbs.shedlock</groupId>
+                <artifactId>shedlock-spring</artifactId>
+                <version>${shedlock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.javacrumbs.shedlock</groupId>
+                <artifactId>shedlock-provider-mongo</artifactId>
+                <version>${shedlock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tunyk.currencyconverter</groupId>
+                <artifactId>currency-converter-api</artifactId>
+                <version>${tunyk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>http://repo.spring.io/libs-snapshot-local</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>http://repo.spring.io/libs-milestone-local</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>http://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>forgerock-community-releases</id>
+            <url>http://maven.forgerock.org:80/repo/community</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <fork>true</fork>
+                    <compilerArgs>
+                        <arg>-XDignore.symbol.file</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

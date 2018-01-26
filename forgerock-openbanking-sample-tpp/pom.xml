@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#
+# The contents of this file are subject to the terms of the Common Development and
+#  Distribution License (the License). You may not use this file except in compliance with the
+#  License.
+#
+#  You can obtain a copy of the License at http://forgerock.org/license/CDDLv1.0.html. See the License for the
+#  specific language governing permission and limitations under the License.
+#
+#  When distributing Covered Software, include this CDDL Header Notice in each file and include
+#  the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+#  Header, with the fields enclosed by brackets [] replaced by your own identifying
+#  information: "Portions copyright [year] [name of copyright owner]".
+#
+#  Copyright 2018 ForgeRock AS.
+#
+#
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.forgerock.openbanking.sample.tpp</groupId>
+    <artifactId>forgerock-openbanking-sample-tpp</artifactId>
+    <packaging>jar</packaging>
+
+    <name>forgerock-openbanking-sample-tpp</name>
+    <description>TPP sample code.</description>
+
+    <parent>
+        <groupId>com.forgerock.openbanking.sample</groupId>
+        <artifactId>forgerock-openbanking-sample</artifactId>
+        <version>1.2.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>uk.org.openbanking</groupId>
+            <artifactId>openbanking-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

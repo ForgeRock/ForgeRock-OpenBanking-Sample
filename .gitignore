@@ -1,0 +1,15 @@
+.idea/*
+!.idea/runConfigurations/*
+node_modules/
+target/
+.mvn/
+logs/*
+
+*.iml
+
+# ForgeRock #
+#############
+set-creds.sh
+local-vm-test.sh
+
+forgerock-openbanking-sample-tpp/src/main/resources/keystore/*

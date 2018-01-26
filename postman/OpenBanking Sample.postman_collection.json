@@ -1,0 +1,1610 @@
+{
+	"info": {
+		"name": "OpenBanking Sample",
+		"_postman_id": "23801838-4e5c-8bb1-585d-b9ec26b0da9e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HelloWorld",
+			"description": "",
+			"item": [
+				{
+					"name": "Hello world test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ebe8ec3b-1454-4dfa-9fcf-979091ba065b",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"return hello world!\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Hello World!\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ForgeRock Financial",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "oidcRootEndpoint",
+									"value": "{{AS_DOMAIN}}/oauth2/",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "discoveryEndpoint",
+									"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "registrationEndpoint",
+									"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "financialID",
+									"value": "{{ASPSP_FINANCIAL_ID}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TPP}}/helloworld/",
+							"host": [
+								"{{TPP}}"
+							],
+							"path": [
+								"helloworld",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TPP onboarding",
+			"description": "",
+			"item": [
+				{
+					"name": "Register TPP to ASPSP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4756fd1a-d7d2-40a7-b234-694de4e6ca7d",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"pm.environment.set(\"ASPSP_ID\", data.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ForgeRock Financial",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "oidcRootEndpoint",
+									"value": "{{AS_DOMAIN}}/oauth2/",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "discoveryEndpoint",
+									"value": "{{RS}}/discovery",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "registrationEndpoint",
+									"value": "{{RS}}/registerTPP",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "financialID",
+									"value": "{{ASPSP_FINANCIAL_ID}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TPP}}/registration/aspsp",
+							"host": [
+								"{{TPP}}"
+							],
+							"path": [
+								"registration",
+								"aspsp"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get Registered ASPSPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ForgeRock Financial",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "oidcRootEndpoint",
+									"value": "{{AS_DOMAIN}}/oauth2/",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "discoveryEndpoint",
+									"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "registrationEndpoint",
+									"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "financialID",
+									"value": "{{ASPSP_FINANCIAL_ID}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TPP}}/aspspConfiguration/",
+							"host": [
+								"{{TPP}}"
+							],
+							"path": [
+								"aspspConfiguration",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AISP",
+			"description": "",
+			"item": [
+				{
+					"name": "Account Request",
+					"description": "",
+					"item": [
+						{
+							"name": "Initiate account request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "aspspId",
+											"value": "{{ASPSP_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/accountrequests/initiateAccountRequest",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"accountrequests",
+										"initiateAccountRequest"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "exchange code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "30c67021-7d85-4834-bd69-64ce34e9d38d",
+										"type": "text/javascript",
+										"exec": [
+											"postman.setEnvironmentVariable(\"access_token_with_consent\", responseBody);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "bankId",
+											"value": "{{BANK_ID}}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "oidcRootEndpoint",
+											"value": "{{AS_DOMAIN}}/oauth2/",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "discoveryEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "registrationEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "financialID",
+											"value": "{{ASPSP_FINANCIAL_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/accountrequests/exchange_code?code=26109a90-0ef0-4a62-b60d-8c13c0ab5924&id_token=eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJkZW1vIiwiYXVkaXRUcmFja2luZ0lkIjoiNGE4ODg2ZWUtMDIzMi00OWZmLTg4NGMtN2NhZjVlODA4YTBmLTQxNDA5IiwiaXNzIjoiaHR0cHM6Ly9hcy5hc3BzcC5kZXYtb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbDo4NDQzL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiI1YTZiMWFjOTMyYTlmYjUxNjQxOGRkNDkiLCJhY3IiOiJ1cm46b3BlbmJhbmtpbmc6cHNkMjpzY2EiLCJhdWQiOiI4NTk5NGNhMC05ZGIzLTQ1MDUtOTM1Yi0wN2RjMDc1Y2I3MDciLCJjX2hhc2giOiJrOFIxVzFxWEM5dHYzN1pPYmVxQWl3Iiwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjoiQTA5YjFjMTliLTAwNGUtNDMyNy04NzMwLWQ2NTczOTBhMGVjOSIsInNfaGFzaCI6Ii1iZVdvQ1hiMVU1TWQyS21TZEU3MkEiLCJhenAiOiI4NTk5NGNhMC05ZGIzLTQ1MDUtOTM1Yi0wN2RjMDc1Y2I3MDciLCJhdXRoX3RpbWUiOjE1MTY5Njg2NzAsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTE2OTcyMjc0LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTUxNjk2ODY3NH0.K6N1rdLctiZTUc3mQcpaoul5qh5df_YWyxOo9BgBQcHdJTC9JugUZkTnbB6xDH-bO0T2kA9-aW3NBR1bxLDMlg&state=5a6b1ac932a9fb516418dd49",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"accountrequests",
+										"exchange_code"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "26109a90-0ef0-4a62-b60d-8c13c0ab5924",
+											"equals": true
+										},
+										{
+											"key": "id_token",
+											"value": "eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJkZW1vIiwiYXVkaXRUcmFja2luZ0lkIjoiNGE4ODg2ZWUtMDIzMi00OWZmLTg4NGMtN2NhZjVlODA4YTBmLTQxNDA5IiwiaXNzIjoiaHR0cHM6Ly9hcy5hc3BzcC5kZXYtb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbDo4NDQzL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiI1YTZiMWFjOTMyYTlmYjUxNjQxOGRkNDkiLCJhY3IiOiJ1cm46b3BlbmJhbmtpbmc6cHNkMjpzY2EiLCJhdWQiOiI4NTk5NGNhMC05ZGIzLTQ1MDUtOTM1Yi0wN2RjMDc1Y2I3MDciLCJjX2hhc2giOiJrOFIxVzFxWEM5dHYzN1pPYmVxQWl3Iiwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjoiQTA5YjFjMTliLTAwNGUtNDMyNy04NzMwLWQ2NTczOTBhMGVjOSIsInNfaGFzaCI6Ii1iZVdvQ1hiMVU1TWQyS21TZEU3MkEiLCJhenAiOiI4NTk5NGNhMC05ZGIzLTQ1MDUtOTM1Yi0wN2RjMDc1Y2I3MDciLCJhdXRoX3RpbWUiOjE1MTY5Njg2NzAsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTE2OTcyMjc0LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTUxNjk2ODY3NH0.K6N1rdLctiZTUc3mQcpaoul5qh5df_YWyxOo9BgBQcHdJTC9JugUZkTnbB6xDH-bO0T2kA9-aW3NBR1bxLDMlg",
+											"equals": true
+										},
+										{
+											"key": "state",
+											"value": "5a6b1ac932a9fb516418dd49",
+											"equals": true
+										}
+									]
+								},
+								"description": null
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Account API",
+					"description": "",
+					"item": [
+						{
+							"name": "account",
+							"description": "",
+							"item": [
+								{
+									"name": "Get account",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289"
+											]
+										},
+										"description": null
+									},
+									"response": []
+								},
+								{
+									"name": "Get balances",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/balances",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"balances"
+											]
+										},
+										"description": null
+									},
+									"response": []
+								},
+								{
+									"name": "Get transactions",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/transactions",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"transactions"
+											]
+										},
+										"description": null
+									},
+									"response": []
+								},
+								{
+									"name": "Get beneficiaries",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/beneficiaries/",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"beneficiaries",
+												""
+											]
+										},
+										"description": null
+									},
+									"response": []
+								},
+								{
+									"name": "Get direct-debits",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/direct-debits",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"direct-debits"
+											]
+										},
+										"description": null
+									},
+									"response": []
+								},
+								{
+									"name": "Get product",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/product",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"product"
+											]
+										},
+										"description": null
+									},
+									"response": []
+								},
+								{
+									"name": "Get standing-orders",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/standing-orders",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"standing-orders"
+											]
+										},
+										"description": null
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get accounts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/accounts",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"accounts"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "Get transactions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/transactions",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"transactions"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "Get balances",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/balances",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"balances"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "Get beneficiaries",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/beneficiaries",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"beneficiaries"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "Get direct-debits",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/direct-debits",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"direct-debits"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "Get products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/products",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"products"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						},
+						{
+							"name": "Get standing-orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/standing-orders",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"standing-orders"
+									]
+								},
+								"description": null
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "PISP",
+			"description": "",
+			"item": [
+				{
+					"name": "Initiate payment request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "aspspId",
+									"value": "{{ASPSP_ID}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TPP}}/payments/initiatePayment",
+							"host": [
+								"{{TPP}}"
+							],
+							"path": [
+								"payments",
+								"initiatePayment"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "exchange code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bankId",
+									"value": "{{BANK_ID}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "oidcRootEndpoint",
+									"value": "{{AS_DOMAIN}}/oauth2/",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "discoveryEndpoint",
+									"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "registrationEndpoint",
+									"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "financialID",
+									"value": "{{ASPSP_FINANCIAL_ID}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TPP}}/payments/exchange_code?code=8789d977-60e4-475a-b6f7-e6e61291be9d&id_token=eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJkZW1vIiwiYXVkaXRUcmFja2luZ0lkIjoiNGE4ODg2ZWUtMDIzMi00OWZmLTg4NGMtN2NhZjVlODA4YTBmLTQ5NzcyIiwiaXNzIjoiaHR0cHM6Ly9hcy5hc3BzcC5kZXYtb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbDo4NDQzL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiI1YTZiMjBhMDMyYTlmYjUzMjFhNzA2ZjMiLCJhY3IiOiJ1cm46b3BlbmJhbmtpbmc6cHNkMjpzY2EiLCJhdWQiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJjX2hhc2giOiJnbGI4cGlYQnRNZXdRY0lUQUZUVVNBIiwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjoiUDU2Zjg5YWVjLTY1NjgtNDM3MC04ZDZiLTFmY2Y3MDBlYTY4NSIsInNfaGFzaCI6Ik1HNHpSNjluTWc5UmpoVnluMzN0SWciLCJhenAiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJhdXRoX3RpbWUiOjE1MTY5Njg2NzAsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTE2OTczNzU5LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTUxNjk3MDE1OX0.hiY0VXoxwi6DTb46q2c1wNQhr4wzfpcc-6_9dskIVRKYWePr1lsSYu7MRNOb9GyBZxt7gfXAdeSuW_UcwoCbRQ&state=5a6b20a032a9fb5321a706f3",
+							"host": [
+								"{{TPP}}"
+							],
+							"path": [
+								"payments",
+								"exchange_code"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "8789d977-60e4-475a-b6f7-e6e61291be9d",
+									"equals": true
+								},
+								{
+									"key": "id_token",
+									"value": "eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJkZW1vIiwiYXVkaXRUcmFja2luZ0lkIjoiNGE4ODg2ZWUtMDIzMi00OWZmLTg4NGMtN2NhZjVlODA4YTBmLTQ5NzcyIiwiaXNzIjoiaHR0cHM6Ly9hcy5hc3BzcC5kZXYtb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbDo4NDQzL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiI1YTZiMjBhMDMyYTlmYjUzMjFhNzA2ZjMiLCJhY3IiOiJ1cm46b3BlbmJhbmtpbmc6cHNkMjpzY2EiLCJhdWQiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJjX2hhc2giOiJnbGI4cGlYQnRNZXdRY0lUQUZUVVNBIiwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjoiUDU2Zjg5YWVjLTY1NjgtNDM3MC04ZDZiLTFmY2Y3MDBlYTY4NSIsInNfaGFzaCI6Ik1HNHpSNjluTWc5UmpoVnluMzN0SWciLCJhenAiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJhdXRoX3RpbWUiOjE1MTY5Njg2NzAsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTE2OTczNzU5LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTUxNjk3MDE1OX0.hiY0VXoxwi6DTb46q2c1wNQhr4wzfpcc-6_9dskIVRKYWePr1lsSYu7MRNOb9GyBZxt7gfXAdeSuW_UcwoCbRQ",
+									"equals": true
+								},
+								{
+									"key": "state",
+									"value": "5a6b20a032a9fb5321a706f3",
+									"equals": true
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discovery",
+			"description": "",
+			"item": [
+				{
+					"name": "discovery",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache, no-store, max-age=0, must-revalidate"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cookie",
+								"value": "cookiename=werewrw;cook"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RS}}/discovery",
+							"host": [
+								"{{RS}}"
+							],
+							"path": [
+								"discovery"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MTLS",
+			"description": "",
+			"item": [
+				{
+					"name": "test mtls",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache, no-store, max-age=0, must-revalidate"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cookie",
+								"value": "cookiename=werewrw;cook"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RS}}/mtlsTest",
+							"host": [
+								"{{RS}}"
+							],
+							"path": [
+								"mtlsTest"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
