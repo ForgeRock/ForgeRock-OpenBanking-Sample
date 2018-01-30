@@ -87,6 +87,47 @@
 			]
 		},
 		{
+			"name": "MTLS",
+			"description": "",
+			"item": [
+				{
+					"name": "test mtls",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache, no-store, max-age=0, must-revalidate"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cookie",
+								"value": "cookiename=werewrw;cook"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RS}}/mtlsTest",
+							"host": [
+								"{{RS}}"
+							],
+							"path": [
+								"mtlsTest"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "TPP onboarding",
 			"description": "",
 			"item": [
@@ -163,6 +204,86 @@
 							"path": [
 								"registration",
 								"aspsp"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Unregister TPP from ASPSP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4756fd1a-d7d2-40a7-b234-694de4e6ca7d",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"pm.environment.set(\"ASPSP_ID\", data.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ForgeRock Financial",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "oidcRootEndpoint",
+									"value": "{{AS_DOMAIN}}/oauth2/",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "discoveryEndpoint",
+									"value": "{{RS}}/discovery",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "registrationEndpoint",
+									"value": "{{RS}}/registerTPP",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "financialID",
+									"value": "{{ASPSP_FINANCIAL_ID}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TPP}}/registration/aspsp/{{ASPSP_ID}}",
+							"host": [
+								"{{TPP}}"
+							],
+							"path": [
+								"registration",
+								"aspsp",
+								"{{ASPSP_ID}}"
 							]
 						},
 						"description": null
@@ -334,7 +455,7 @@
 									]
 								},
 								"url": {
-									"raw": "{{TPP}}/accountrequests/exchange_code?code=26109a90-0ef0-4a62-b60d-8c13c0ab5924&id_token=eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJkZW1vIiwiYXVkaXRUcmFja2luZ0lkIjoiNGE4ODg2ZWUtMDIzMi00OWZmLTg4NGMtN2NhZjVlODA4YTBmLTQxNDA5IiwiaXNzIjoiaHR0cHM6Ly9hcy5hc3BzcC5kZXYtb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbDo4NDQzL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiI1YTZiMWFjOTMyYTlmYjUxNjQxOGRkNDkiLCJhY3IiOiJ1cm46b3BlbmJhbmtpbmc6cHNkMjpzY2EiLCJhdWQiOiI4NTk5NGNhMC05ZGIzLTQ1MDUtOTM1Yi0wN2RjMDc1Y2I3MDciLCJjX2hhc2giOiJrOFIxVzFxWEM5dHYzN1pPYmVxQWl3Iiwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjoiQTA5YjFjMTliLTAwNGUtNDMyNy04NzMwLWQ2NTczOTBhMGVjOSIsInNfaGFzaCI6Ii1iZVdvQ1hiMVU1TWQyS21TZEU3MkEiLCJhenAiOiI4NTk5NGNhMC05ZGIzLTQ1MDUtOTM1Yi0wN2RjMDc1Y2I3MDciLCJhdXRoX3RpbWUiOjE1MTY5Njg2NzAsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTE2OTcyMjc0LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTUxNjk2ODY3NH0.K6N1rdLctiZTUc3mQcpaoul5qh5df_YWyxOo9BgBQcHdJTC9JugUZkTnbB6xDH-bO0T2kA9-aW3NBR1bxLDMlg&state=5a6b1ac932a9fb516418dd49",
+									"raw": "{{TPP}}/accountrequests/exchange_code?code=06555354-a1eb-4af7-a330-27ec671cfd37&id_token=eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJxY2FzdGVsIiwiYXVkaXRUcmFja2luZ0lkIjoiYzMzMzMzM2QtMGFkNC00YTM3LWI0MTctOThjMDk1NGZlZWM3LTExMjAzMyIsImlzcyI6Imh0dHBzOi8vYXMuYXNwc3AuaW50ZWctb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbC9vYXV0aDIvb3BlbmJhbmtpbmciLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsIm5vbmNlIjoiNWE3MDRiNTJkY2Q1MWMxYmYzZWM5ODk5IiwiYWNyIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiYXVkIjoiYmViZTBiZGQtYWNlOS00ZjQ1LWJiOWQtNDMxNGEyZGNiMTc4IiwiY19oYXNoIjoidzF0VnE5UXd2UzBlcEZlZV9TM1lGdyIsIm9wZW5iYW5raW5nX2ludGVudF9pZCI6IkFhNWY4YjYwZi0xMWUzLTQyODItOTcwNS00N2JiOWQ4MzFhYjMiLCJzX2hhc2giOiJ4STBxNGN0cDNmNVU1dEJWcGdlVkNBIiwiYXpwIjoiYmViZTBiZGQtYWNlOS00ZjQ1LWJiOWQtNDMxNGEyZGNiMTc4IiwiYXV0aF90aW1lIjoxNTE3MzA4Nzk4LCJyZWFsbSI6Ii9vcGVuYmFua2luZyIsImV4cCI6MTUxNzMxMjQyNCwidG9rZW5UeXBlIjoiSldUVG9rZW4iLCJpYXQiOjE1MTczMDg4MjR9.xVOVQqG2DO9FT_T--5jNtqOse5nptjGOuokIp1EBZ2RH7BZh2y2xfPqF-YiHQgr-Ee2hrX0Ekr8Stvi2iIDKJw&state=5a704b52dcd51c1bf3ec9899",
 									"host": [
 										"{{TPP}}"
 									],
@@ -345,17 +466,17 @@
 									"query": [
 										{
 											"key": "code",
-											"value": "26109a90-0ef0-4a62-b60d-8c13c0ab5924",
+											"value": "06555354-a1eb-4af7-a330-27ec671cfd37",
 											"equals": true
 										},
 										{
 											"key": "id_token",
-											"value": "eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJkZW1vIiwiYXVkaXRUcmFja2luZ0lkIjoiNGE4ODg2ZWUtMDIzMi00OWZmLTg4NGMtN2NhZjVlODA4YTBmLTQxNDA5IiwiaXNzIjoiaHR0cHM6Ly9hcy5hc3BzcC5kZXYtb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbDo4NDQzL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiI1YTZiMWFjOTMyYTlmYjUxNjQxOGRkNDkiLCJhY3IiOiJ1cm46b3BlbmJhbmtpbmc6cHNkMjpzY2EiLCJhdWQiOiI4NTk5NGNhMC05ZGIzLTQ1MDUtOTM1Yi0wN2RjMDc1Y2I3MDciLCJjX2hhc2giOiJrOFIxVzFxWEM5dHYzN1pPYmVxQWl3Iiwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjoiQTA5YjFjMTliLTAwNGUtNDMyNy04NzMwLWQ2NTczOTBhMGVjOSIsInNfaGFzaCI6Ii1iZVdvQ1hiMVU1TWQyS21TZEU3MkEiLCJhenAiOiI4NTk5NGNhMC05ZGIzLTQ1MDUtOTM1Yi0wN2RjMDc1Y2I3MDciLCJhdXRoX3RpbWUiOjE1MTY5Njg2NzAsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTE2OTcyMjc0LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTUxNjk2ODY3NH0.K6N1rdLctiZTUc3mQcpaoul5qh5df_YWyxOo9BgBQcHdJTC9JugUZkTnbB6xDH-bO0T2kA9-aW3NBR1bxLDMlg",
+											"value": "eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJxY2FzdGVsIiwiYXVkaXRUcmFja2luZ0lkIjoiYzMzMzMzM2QtMGFkNC00YTM3LWI0MTctOThjMDk1NGZlZWM3LTExMjAzMyIsImlzcyI6Imh0dHBzOi8vYXMuYXNwc3AuaW50ZWctb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbC9vYXV0aDIvb3BlbmJhbmtpbmciLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsIm5vbmNlIjoiNWE3MDRiNTJkY2Q1MWMxYmYzZWM5ODk5IiwiYWNyIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiYXVkIjoiYmViZTBiZGQtYWNlOS00ZjQ1LWJiOWQtNDMxNGEyZGNiMTc4IiwiY19oYXNoIjoidzF0VnE5UXd2UzBlcEZlZV9TM1lGdyIsIm9wZW5iYW5raW5nX2ludGVudF9pZCI6IkFhNWY4YjYwZi0xMWUzLTQyODItOTcwNS00N2JiOWQ4MzFhYjMiLCJzX2hhc2giOiJ4STBxNGN0cDNmNVU1dEJWcGdlVkNBIiwiYXpwIjoiYmViZTBiZGQtYWNlOS00ZjQ1LWJiOWQtNDMxNGEyZGNiMTc4IiwiYXV0aF90aW1lIjoxNTE3MzA4Nzk4LCJyZWFsbSI6Ii9vcGVuYmFua2luZyIsImV4cCI6MTUxNzMxMjQyNCwidG9rZW5UeXBlIjoiSldUVG9rZW4iLCJpYXQiOjE1MTczMDg4MjR9.xVOVQqG2DO9FT_T--5jNtqOse5nptjGOuokIp1EBZ2RH7BZh2y2xfPqF-YiHQgr-Ee2hrX0Ekr8Stvi2iIDKJw",
 											"equals": true
 										},
 										{
 											"key": "state",
-											"value": "5a6b1ac932a9fb516418dd49",
+											"value": "5a704b52dcd51c1bf3ec9899",
 											"equals": true
 										}
 									]
@@ -1529,7 +1650,7 @@
 			"description": "",
 			"item": [
 				{
-					"name": "discovery",
+					"name": "RS discovery",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1562,15 +1683,9 @@
 						"description": null
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "MTLS",
-			"description": "",
-			"item": [
+				},
 				{
-					"name": "test mtls",
+					"name": "AS discovery",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1592,12 +1707,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{RS}}/mtlsTest",
+							"raw": "{{AS_DOMAIN}}/oauth2/.well-known/openid-configuration",
 							"host": [
-								"{{RS}}"
+								"{{AS_DOMAIN}}"
 							],
 							"path": [
-								"mtlsTest"
+								"oauth2",
+								".well-known",
+								"openid-configuration"
 							]
 						},
 						"description": null
