@@ -40,7 +40,7 @@ public class ASPSPASRegistrationService {
     @Autowired
     private AspspConfigurationMongoRepository aspspConfigurationRepository;
 
-    public OIDCRegistrationResponse register(String registrationEndpoint, String registrationRequest) throws HttpClientErrorException, IOException {
+    public OIDCRegistrationResponse register(String registrationEndpoint, String registrationRequest) throws HttpClientErrorException {
         LOGGER.info("Register a new TPP to the ASPSP-AS");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf("application/jwt"));

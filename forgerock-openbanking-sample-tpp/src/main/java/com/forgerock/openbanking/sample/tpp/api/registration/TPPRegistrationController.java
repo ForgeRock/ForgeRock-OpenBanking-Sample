@@ -148,7 +148,7 @@ public class TPPRegistrationController implements TPPRegistration {
 
             return ResponseEntity.ok(aspspConfigurationRepository.save(aspspConfiguration));
         } catch (HttpServerErrorException | HttpClientErrorException e) {
-            LOGGER.error("Couldn't read the error returned by the RS", e);
+            LOGGER.error("Couldn't read the error returned by the RS: {}", e.getResponseBodyAsString(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getResponseBodyAsString());
         } catch (Exception e) {
             LOGGER.error("An error happened", e);

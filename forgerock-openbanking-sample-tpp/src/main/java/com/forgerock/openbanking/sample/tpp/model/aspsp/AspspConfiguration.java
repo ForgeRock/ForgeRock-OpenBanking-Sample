@@ -129,4 +129,22 @@ public class AspspConfiguration {
     public void setRegistrationEndpoint(String registrationEndpoint) {
         this.registrationEndpoint = registrationEndpoint;
     }
+
+    @Override
+    public String toString() {
+        return "AspspConfiguration{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", logo='" + logo + '\'' +
+                ", financialId='" + financialId + '\'' +
+                ", ssa='" + ssa + '\'' +
+                ", wellKnownEndpoint='" + wellKnownEndpoint + '\'' +
+                ", discoveryEndpoint='" + discoveryEndpoint + '\'' +
+                ", registrationEndpoint='" + registrationEndpoint + '\'' +
+                ", oidcRegistrationResponse=" + oidcRegistrationResponse +
+                ", oidcDiscoveryResponse=" + oidcDiscoveryResponse +
+                ", discoveryAPILinksPayment=" + discoveryAPILinksPayment +
+                ", discoveryAPILinksAccount=" + discoveryAPILinksAccount +
+                '}';
+    }
 }
