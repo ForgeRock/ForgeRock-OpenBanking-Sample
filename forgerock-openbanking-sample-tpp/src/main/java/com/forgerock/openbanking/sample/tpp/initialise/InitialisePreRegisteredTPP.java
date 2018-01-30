@@ -17,7 +17,6 @@
 package com.forgerock.openbanking.sample.tpp.initialise;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.forgerock.openbanking.sample.tpp.configuration.TppConfiguration;
 import com.forgerock.openbanking.sample.tpp.model.aspsp.AspspConfiguration;
 import com.forgerock.openbanking.sample.tpp.repository.AspspConfigurationMongoRepository;
 import org.slf4j.Logger;
@@ -39,7 +38,7 @@ public class InitialisePreRegisteredTPP {
     private static final Logger LOGGER = LoggerFactory.getLogger(InitialisePreRegisteredTPP.class);
 
     @Value("${preregisteredTpp}")
-    private Resource keys;
+    private Resource aspspConfigurationBackup;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -47,14 +46,17 @@ public class InitialisePreRegisteredTPP {
     private AspspConfigurationMongoRepository aspspConfigurationMongoRepository;
 
     @Bean
-    public CommandLineRunner initialiseKeys() {
+    public CommandLineRunner initialiseAspspConfiguration() {
         return (args) -> {
             aspspConfigurationMongoRepository.deleteAll();
+            LOGGER.debug("Load ASPSP configuration from backup {}", aspspConfigurationBackup.getURI());
             AspspConfiguration preRegisteredAspspConfiguration = getPreRegisteredAspspConfiguration();
             if (preRegisteredAspspConfiguration != null && preRegisteredAspspConfiguration.getId() != null) {
                 aspspConfigurationMongoRepository.save(preRegisteredAspspConfiguration);
+                LOGGER.debug("ASPSP configuration loaded with success: {}", preRegisteredAspspConfiguration);
+            } else {
+                LOGGER.debug("No ASPSP configuration backup found.");
             }
-            LOGGER.debug("All the keys are created with success");
         };
     }
 
@@ -63,7 +65,7 @@ public class InitialisePreRegisteredTPP {
         InputStream is = null;
         BufferedReader br = null;
         try {
-            is = keys.getInputStream();
+            is = aspspConfigurationBackup.getInputStream();
             br = new BufferedReader(new InputStreamReader(is));
 
             String line;
@@ -72,7 +74,7 @@ public class InitialisePreRegisteredTPP {
             }
             return objectMapper.readValue(result.toString(), AspspConfiguration.class);
         } catch (IOException e) {
-            LOGGER.error("Can't read keys back up resource", e);
+            LOGGER.error("Can't read aspspConfigurationBackup back up resource", e);
             throw new RuntimeException(e);
         } finally {
             if (is != null) {
