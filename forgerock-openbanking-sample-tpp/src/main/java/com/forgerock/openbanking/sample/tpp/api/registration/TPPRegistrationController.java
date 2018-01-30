@@ -143,6 +143,7 @@ public class TPPRegistrationController implements TPPRegistration {
             aspspConfiguration.setFinancialId(financialID);
             aspspConfiguration.setSsa(ssa);
             aspspConfiguration.setOidcRegistrationResponse(oidcRegistrationResponse);
+            aspspConfiguration.setRegistrationEndpoint(registrationEndpoint);
             aspspConfiguration.setDiscoveryAPILinksPayment(paymentInitiationAPI.get().getLinks());
             aspspConfiguration.setDiscoveryAPILinksAccount(accountAndTransactionAPI.get().getLinks());
 
