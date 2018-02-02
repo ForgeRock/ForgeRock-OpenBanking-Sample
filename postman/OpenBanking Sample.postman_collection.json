@@ -211,16 +211,75 @@
 					"response": []
 				},
 				{
+					"name": "Get Registered ASPSPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ForgeRock Financial",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "oidcRootEndpoint",
+									"value": "{{AS_DOMAIN}}/oauth2/",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "discoveryEndpoint",
+									"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "registrationEndpoint",
+									"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "financialID",
+									"value": "{{ASPSP_FINANCIAL_ID}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TPP}}/aspspConfiguration/",
+							"host": [
+								"{{TPP}}"
+							],
+							"path": [
+								"aspspConfiguration",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
 					"name": "Unregister TPP from ASPSP",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "4756fd1a-d7d2-40a7-b234-694de4e6ca7d",
+								"id": "61186d41-d2dd-4ad0-a340-fccd63f522ea",
 								"type": "text/javascript",
 								"exec": [
-									"var data = JSON.parse(responseBody);",
-									"pm.environment.set(\"ASPSP_ID\", data.id);",
+									"",
 									""
 								]
 							}
@@ -284,66 +343,6 @@
 								"registration",
 								"aspsp",
 								"{{ASPSP_ID}}"
-							]
-						},
-						"description": null
-					},
-					"response": []
-				},
-				{
-					"name": "Get Registered ASPSPs",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "ForgeRock Financial",
-									"description": "",
-									"type": "text"
-								},
-								{
-									"key": "logo",
-									"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
-									"description": "",
-									"type": "text"
-								},
-								{
-									"key": "oidcRootEndpoint",
-									"value": "{{AS_DOMAIN}}/oauth2/",
-									"description": "",
-									"type": "text"
-								},
-								{
-									"key": "discoveryEndpoint",
-									"value": "{{RS_DOMAIN_ZUUL}}/discovery",
-									"description": "",
-									"type": "text"
-								},
-								{
-									"key": "registrationEndpoint",
-									"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
-									"description": "",
-									"type": "text"
-								},
-								{
-									"key": "financialID",
-									"value": "{{ASPSP_FINANCIAL_ID}}",
-									"description": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{TPP}}/aspspConfiguration/",
-							"host": [
-								"{{TPP}}"
-							],
-							"path": [
-								"aspspConfiguration",
-								""
 							]
 						},
 						"description": null
@@ -1715,6 +1714,47 @@
 								"oauth2",
 								".well-known",
 								"openid-configuration"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Unregister directly with RS",
+			"description": "",
+			"item": [
+				{
+					"name": "Unregister with RS",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache, no-store, max-age=0, must-revalidate"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cookie",
+								"value": "cookiename=werewrw;cook"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RS}}/registerTPP",
+							"host": [
+								"{{RS}}"
+							],
+							"path": [
+								"registerTPP"
 							]
 						},
 						"description": null

@@ -53,7 +53,7 @@ tpp:
     signature:
       alias: signing-1xfkrciqohnbwjou9z72x5 #<-- your software ID !! IN LOWER CASE !!
       algorithm: RS256
-      kid: uC55s4diObcSOxNr3nbNOKoLyJs  #<-- the signing key ID
+      kid: HLJp5u3SWeYI5Bock1WFzo5IVmk  #<-- the signing key ID
       password: changeit
   softwareId: 1xFkRciqOHnBWjOU9z72X5 #<-- your software ID
   aisp:
