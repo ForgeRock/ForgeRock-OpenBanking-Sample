@@ -59,11 +59,12 @@ VALIDITY=3650
 TPP_OU=$(TPP_ORGANISATION_ID)
 TPP_CN=$(TPP_SOFTWARE_ID)
 TPP_O=$(OB_ORGANISATION_ID)
+TPP_C=GB
 
 #We generate a self-signed CA to generate keys from it
 DNAME_CA='CN=openbanking CA,OU=$(FORGEROCK_OU),O=$(FORGEROCK_O),L=$(FORGEROCK_L),ST=$(FORGEROCK_ST),C=$(FORGEROCK_C)'
 #It's a bit unusual but the CN is not the hostname for OB. They want it to be the software ID and the OU the organisation ID
-DNAME_TPP_OB='CN=$(TPP_CN),OU=$(TPP_OU),O=$(TTP_O),O=$(FORGEROCK_O),L=$(FORGEROCK_L),ST=$(FORGEROCK_ST),C=$(FORGEROCK_C)'
+DNAME_TPP_OB='CN=$(TPP_CN),OU=$(TPP_OU),O=$(TTP_O),C=$(TPP_C)'
 
 #Self signed certificate
 SELF_SIGNED_CA_ALIAS=selfSignedCA
