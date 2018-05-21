@@ -38,7 +38,7 @@ server:
     port: 7777
     ssl:
         enabled: true
-        key-alias: transport-1xfkrciqohnbwjou9z72x5 #<-- your software ID !! IN LOWER CASE !!
+        key-alias: transport-7btarwcygjdhwh9285fojd #<-- your software ID !! IN LOWER CASE !!
         key-password: changeit
         key-store: classpath:keystore/keystore.p12
         key-store-password: changeit
@@ -49,13 +49,13 @@ tpp:
   root: https://${spring.hostname}:${server.port}/open-banking/v1.1
   certificate:
     transport:
-      alias: transport-1xfkrciqohnbwjou9z72x5 #<-- your software ID !! IN LOWER CASE !!
+      alias: transport-7btarwcygjdhwh9285fojd #<-- your software ID !! IN LOWER CASE !!
     signature:
-      alias: signing-1xfkrciqohnbwjou9z72x5 #<-- your software ID !! IN LOWER CASE !!
+      alias: signing-7btarwcygjdhwh9285fojd #<-- your software ID !! IN LOWER CASE !!
       algorithm: RS256
-      kid: HLJp5u3SWeYI5Bock1WFzo5IVmk  #<-- the signing key ID
+      kid: 6giz-AI_R3n7Uw93KPtl1sVRAlY  #<-- the signing key ID
       password: changeit
-  softwareId: 1xFkRciqOHnBWjOU9z72X5 #<-- your software ID
+  softwareId: 7BtarWcyGjdHwH9285FojD #<-- your software ID
   aisp:
     redirect_uri: https://google.fr   #<-- replace this by the redirect uri you have setup in your SSA
   pisp:

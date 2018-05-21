@@ -16,24 +16,27 @@
 #
 
 # !!!! REPLACE THOSE IMPORMATION BY YOURS !!!
-TPP_ORGANISATION_ID=sOcPXVfMgEHGs2wpvA
-TPP_SOFTWARE_ID=1xFkRciqOHnBWjOU9z72X5
+TPP_ORGANISATION_ID=0015800001041REAAY
+TPP_SOFTWARE_ID=7BtarWcyGjdHwH9285FojD
 
 
 #Default keys parameters
 
 TRANSPORT_KEY_ALGO=RSA
-TRANSPORT_KEY_SIZE=4096
+TRANSPORT_KEY_SIZE=2048
 TRANSPORT_KEY_SIGNING_ALGO=SHA256withRSA
 
 SIGNING_KEY_ALGO=RSA
-SIGNING_KEY_SIZE=4096
+SIGNING_KEY_SIZE=2048
 SIGNING_KEY_SIGNING_ALGO=SHA256withRSA
 
 #OB directory
-OB_ORGANISATION_ID=Open Banking Limited
-OB_ROOT_CA_PATH=obOfficialCertificates/obtestrootca.cer
-OB_ROOT_CA_ALIAS=obtestrootca
+OB_ORGANISATION_ID=OpenBanking
+OB_ROOT_CA_PATH=obOfficialCertificates/OB_SandBox_PP_Root_CA.cer
+OB_ROOT_CA_ALIAS=obsandboxrootca
+
+OB_ROOT_MIT_CA_PATH=obOfficialCertificates/obtestrootca.cer
+OB_ROOT_MIT_CA_ALIAS=obmitrootca
 
 #
 # Your TPP settings
@@ -51,7 +54,7 @@ FORGEROCK_OU=forgerock.financial
 FORGEROCK_O=ForgeRock
 FORGEROCK_L=Bristol
 FORGEROCK_ST=Avon
-FORGEROCK_C=UK
+FORGEROCK_C=GB
 
 VALIDITY=3650
 
@@ -64,7 +67,7 @@ TPP_C=GB
 #We generate a self-signed CA to generate keys from it
 DNAME_CA='CN=openbanking CA,OU=$(FORGEROCK_OU),O=$(FORGEROCK_O),L=$(FORGEROCK_L),ST=$(FORGEROCK_ST),C=$(FORGEROCK_C)'
 #It's a bit unusual but the CN is not the hostname for OB. They want it to be the software ID and the OU the organisation ID
-DNAME_TPP_OB='CN=$(TPP_CN),OU=$(TPP_OU),O=$(TTP_O),C=$(TPP_C)'
+DNAME_TPP_OB='CN=$(TPP_CN),OU=$(TPP_OU),O=$(TPP_O),C=$(FORGEROCK_C)'
 
 #Self signed certificate
 SELF_SIGNED_CA_ALIAS=selfSignedCA
@@ -116,49 +119,46 @@ create-tpp-truststore:
 	keytool -import -trustcacerts -noprompt -alias $(OB_ROOT_CA_ALIAS) -file $(OB_ROOT_CA_PATH) \
 	    -keystore $(TRUSTORE_TPP) -storepass $(PASSWORD) -deststoretype pkcs12
 
+	# Import MIT OB certificate into truststore
+	keytool -import -alias $(OB_ROOT_MIT_CA_ALIAS) -file $(OB_ROOT_MIT_CA_PATH) -keystore $(TRUSTORE_TPP)
 #Function to generate a key and export it in all the format you may need.
 define generate_csr
 	$(eval ALIAS=$(1))
 	$(eval DNAME=$(2))
-	$(eval SAN=$(3))
-	$(eval KEYSTORE=$(4))
-	$(eval PASSWORD=$(5))
-	$(eval FOLDER=$(6))
-	$(eval KEY_SIZE=$(7))
-	$(eval KEY_SIGNING_ALGO=$(8))
-	$(eval KEY_ALGO=$(9))
+	$(eval KEYSTORE=$(3))
+	$(eval PASSWORD=$(4))
+	$(eval FOLDER=$(5))
+	$(eval KEY_SIZE=$(6))
+	$(eval KEY_SIGNING_ALGO=$(7))
+	$(eval KEY_ALGO=$(8))
 
 	@echo "\nGenerate transport $(ALIAS) certificate\n"
 	keytool -genkey -alias $(ALIAS) \
 		-keyalg $(KEY_ALGO) -keysize $(KEY_SIZE) -sigalg $(KEY_SIGNING_ALGO) \
 		-keypass $(PASSWORD) \
 		-validity $(VALIDITY) -dname $(DNAME) \
-		-ext SAN=$(SAN) \
 		-keystore $(KEYSTORE) -storepass $(PASSWORD)
 
 	@echo "\nGenerate $(ALIAS) certificate signing request\n"
 	keytool -certreq -alias $(ALIAS) -ext BC=ca:true \
 		-keyalg $(KEY_ALGO) -keysize $(KEY_SIZE) -sigalg $(KEY_SIGNING_ALGO) \
 		-validity $(VALIDITY) -file "$(FOLDER)/$(ALIAS).csr" \
-		-ext SAN=$(SAN) \
 		-keystore $(KEYSTORE) -storepass $(PASSWORD)
 endef
 
 define import_csr
 	$(eval ALIAS=$(1))
 	$(eval DNAME=$(2))
-	$(eval SAN=$(3))
-	$(eval KEYSTORE=$(4))
-	$(eval PASSWORD=$(5))
-	$(eval FOLDER=$(6))
-	$(eval KEY_SIZE=$(7))
-	$(eval KEY_SIGNING_ALGO=$(8))
-	$(eval KEY_ALGO=$(9))
+	$(eval KEYSTORE=$(3))
+	$(eval PASSWORD=$(4))
+	$(eval FOLDER=$(5))
+	$(eval KEY_SIZE=$(6))
+	$(eval KEY_SIGNING_ALGO=$(7))
+	$(eval KEY_ALGO=$(8))
 
 	@echo "\nImport $(ALIAS) signed certificate into $(KEYSTORE)\n"
 	keytool -import -trustcacerts -noprompt -alias $(ALIAS) \
-		-file "$(FOLDER)/$(ALIAS).pem" \
-		-ext SAN=$(SAN) \
+		-file "$(FOLDER)/$(ALIAS).pem"  \
 		-keystore $(KEYSTORE) -storepass $(PASSWORD)
 
 	@echo "\nExport $(ALIAS) private certificate for importing into a browser\n"
@@ -182,20 +182,16 @@ import-pem: import-tpp-request-pem import-tpp-signing-pem
 create-tpp-transport-csr:
 	@echo "\nGenerate a transport CSR\n"
 	$(eval ALIAS=transport-$(TPP_SOFTWARE_ID))
-	$(eval SAN=dns:$(HOSTNAME_TPP))
 
 	$(call generate_csr,$(ALIAS),$(DNAME_TPP_OB),\
-	$(SAN),\
 	$(KEYSTORE_TPP),$(PASSWORD),$(FOLDER_TPP), \
 	$(TRANSPORT_KEY_SIZE), $(TRANSPORT_KEY_SIGNING_ALGO), $(TRANSPORT_KEY_ALGO))
 
 import-tpp-request-pem:
 	@echo "\nImport the transport PEM\n"
 	$(eval ALIAS=transport-$(TPP_SOFTWARE_ID))
-	$(eval SAN=dns:$(HOSTNAME_TPP))
 
 	$(call import_csr,$(ALIAS),$(DNAME_TPP_OB),\
-	$(SAN),\
 	$(KEYSTORE_TPP),$(PASSWORD),$(FOLDER_TPP), \
 	$(TRANSPORT_KEY_SIZE), $(TRANSPORT_KEY_SIGNING_ALGO), $(TRANSPORT_KEY_ALGO))
 
@@ -204,20 +200,16 @@ import-tpp-request-pem:
 create-tpp-signing-csr:
 	@echo "\nGenerate a signing CSR\n"
 	$(eval ALIAS=signing-$(TPP_SOFTWARE_ID))
-	$(eval SAN=dns:$(HOSTNAME_TPP))
 
 	$(call generate_csr,$(ALIAS),$(DNAME_TPP_OB),\
-	$(SAN),\
 	$(KEYSTORE_TPP),$(PASSWORD),$(FOLDER_TPP), \
 	$(TRANSPORT_KEY_SIZE), $(TRANSPORT_KEY_SIGNING_ALGO), $(TRANSPORT_KEY_ALGO))
 
 import-tpp-signing-pem:
 	@echo "\nimport the signing pem\n"
 	$(eval ALIAS=signing-$(TPP_SOFTWARE_ID))
-	$(eval SAN=dns:$(HOSTNAME_TPP))
 
 	$(call import_csr,$(ALIAS),$(DNAME_TPP_OB),\
-	$(SAN),\
 	$(KEYSTORE_TPP),$(PASSWORD),$(FOLDER_TPP), \
 	$(TRANSPORT_KEY_SIZE), $(TRANSPORT_KEY_SIGNING_ALGO), $(TRANSPORT_KEY_ALGO))
 
