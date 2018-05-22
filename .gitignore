@@ -2,7 +2,6 @@
 !.idea/runConfigurations/*
 node_modules/
 target/
-.mvn/
 logs/*
 
 *.iml
