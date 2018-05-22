@@ -1,0 +1,3782 @@
+{
+	"info": {
+		"_postman_id": "23801838-4e5c-8bb1-585d-b9ec26b0da9e",
+		"name": "OpenBanking Sample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TPP Sample",
+			"description": "",
+			"item": [
+				{
+					"name": "HelloWorld",
+					"description": "",
+					"item": [
+						{
+							"name": "Hello world test",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ebe8ec3b-1454-4dfa-9fcf-979091ba065b",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"return hello world!\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Hello World!\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "ForgeRock Financial",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "oidcRootEndpoint",
+											"value": "{{AS_DOMAIN}}/oauth2/",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "discoveryEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "registrationEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "financialID",
+											"value": "{{ASPSP_FINANCIAL_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/helloworld/",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"helloworld",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "onboarding",
+					"description": "",
+					"item": [
+						{
+							"name": "Register TPP to ASPSP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4756fd1a-d7d2-40a7-b234-694de4e6ca7d",
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"pm.environment.set(\"ASPSP_ID\", data.id);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "ForgeRock Financial",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "oidcRootEndpoint",
+											"value": "{{AS_DOMAIN}}/oauth2/",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "discoveryEndpoint",
+											"value": "{{RS}}/discovery",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "registrationEndpoint",
+											"value": "{{RS}}/registerTPP",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "financialID",
+											"value": "{{ASPSP_FINANCIAL_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/registration/aspsp",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"registration",
+										"aspsp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Registered ASPSPs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "ForgeRock Financial",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "oidcRootEndpoint",
+											"value": "{{AS_DOMAIN}}/oauth2/",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "discoveryEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "registrationEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "financialID",
+											"value": "{{ASPSP_FINANCIAL_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/aspspConfiguration/",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"aspspConfiguration",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unregister TPP from ASPSP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "61186d41-d2dd-4ad0-a340-fccd63f522ea",
+										"type": "text/javascript",
+										"exec": [
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "ForgeRock Financial",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "oidcRootEndpoint",
+											"value": "{{AS_DOMAIN}}/oauth2/",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "discoveryEndpoint",
+											"value": "{{RS}}/discovery",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "registrationEndpoint",
+											"value": "{{RS}}/registerTPP",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "financialID",
+											"value": "{{ASPSP_FINANCIAL_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/registration/aspsp/{{ASPSP_ID}}",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"registration",
+										"aspsp",
+										"{{ASPSP_ID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Account Request",
+					"description": "",
+					"item": [
+						{
+							"name": "Initiate account request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "aspspId",
+											"value": "{{ASPSP_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/accountrequests/initiateAccountRequest",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"accountrequests",
+										"initiateAccountRequest"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exchange code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "30c67021-7d85-4834-bd69-64ce34e9d38d",
+										"type": "text/javascript",
+										"exec": [
+											"postman.setEnvironmentVariable(\"access_token_with_consent\", responseBody);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "bankId",
+											"value": "{{BANK_ID}}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "oidcRootEndpoint",
+											"value": "{{AS_DOMAIN}}/oauth2/",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "discoveryEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "registrationEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "financialID",
+											"value": "{{ASPSP_FINANCIAL_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/accountrequests/exchange_code?code=06555354-a1eb-4af7-a330-27ec671cfd37&id_token=eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJxY2FzdGVsIiwiYXVkaXRUcmFja2luZ0lkIjoiYzMzMzMzM2QtMGFkNC00YTM3LWI0MTctOThjMDk1NGZlZWM3LTExMjAzMyIsImlzcyI6Imh0dHBzOi8vYXMuYXNwc3AuaW50ZWctb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbC9vYXV0aDIvb3BlbmJhbmtpbmciLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsIm5vbmNlIjoiNWE3MDRiNTJkY2Q1MWMxYmYzZWM5ODk5IiwiYWNyIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiYXVkIjoiYmViZTBiZGQtYWNlOS00ZjQ1LWJiOWQtNDMxNGEyZGNiMTc4IiwiY19oYXNoIjoidzF0VnE5UXd2UzBlcEZlZV9TM1lGdyIsIm9wZW5iYW5raW5nX2ludGVudF9pZCI6IkFhNWY4YjYwZi0xMWUzLTQyODItOTcwNS00N2JiOWQ4MzFhYjMiLCJzX2hhc2giOiJ4STBxNGN0cDNmNVU1dEJWcGdlVkNBIiwiYXpwIjoiYmViZTBiZGQtYWNlOS00ZjQ1LWJiOWQtNDMxNGEyZGNiMTc4IiwiYXV0aF90aW1lIjoxNTE3MzA4Nzk4LCJyZWFsbSI6Ii9vcGVuYmFua2luZyIsImV4cCI6MTUxNzMxMjQyNCwidG9rZW5UeXBlIjoiSldUVG9rZW4iLCJpYXQiOjE1MTczMDg4MjR9.xVOVQqG2DO9FT_T--5jNtqOse5nptjGOuokIp1EBZ2RH7BZh2y2xfPqF-YiHQgr-Ee2hrX0Ekr8Stvi2iIDKJw&state=5a704b52dcd51c1bf3ec9899",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"accountrequests",
+										"exchange_code"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "06555354-a1eb-4af7-a330-27ec671cfd37"
+										},
+										{
+											"key": "id_token",
+											"value": "eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJxY2FzdGVsIiwiYXVkaXRUcmFja2luZ0lkIjoiYzMzMzMzM2QtMGFkNC00YTM3LWI0MTctOThjMDk1NGZlZWM3LTExMjAzMyIsImlzcyI6Imh0dHBzOi8vYXMuYXNwc3AuaW50ZWctb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbC9vYXV0aDIvb3BlbmJhbmtpbmciLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsIm5vbmNlIjoiNWE3MDRiNTJkY2Q1MWMxYmYzZWM5ODk5IiwiYWNyIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiYXVkIjoiYmViZTBiZGQtYWNlOS00ZjQ1LWJiOWQtNDMxNGEyZGNiMTc4IiwiY19oYXNoIjoidzF0VnE5UXd2UzBlcEZlZV9TM1lGdyIsIm9wZW5iYW5raW5nX2ludGVudF9pZCI6IkFhNWY4YjYwZi0xMWUzLTQyODItOTcwNS00N2JiOWQ4MzFhYjMiLCJzX2hhc2giOiJ4STBxNGN0cDNmNVU1dEJWcGdlVkNBIiwiYXpwIjoiYmViZTBiZGQtYWNlOS00ZjQ1LWJiOWQtNDMxNGEyZGNiMTc4IiwiYXV0aF90aW1lIjoxNTE3MzA4Nzk4LCJyZWFsbSI6Ii9vcGVuYmFua2luZyIsImV4cCI6MTUxNzMxMjQyNCwidG9rZW5UeXBlIjoiSldUVG9rZW4iLCJpYXQiOjE1MTczMDg4MjR9.xVOVQqG2DO9FT_T--5jNtqOse5nptjGOuokIp1EBZ2RH7BZh2y2xfPqF-YiHQgr-Ee2hrX0Ekr8Stvi2iIDKJw"
+										},
+										{
+											"key": "state",
+											"value": "5a704b52dcd51c1bf3ec9899"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Payment API",
+					"description": "",
+					"item": [
+						{
+							"name": "Initiate payment request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "aspspId",
+											"value": "{{ASPSP_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/payments/initiatePayment",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"payments",
+										"initiatePayment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exchange code",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "bankId",
+											"value": "{{BANK_ID}}",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"value": "https://www.forgerock.com/app/uploads/2017/02/forgerock-logo-400px-square-300x300.png",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "oidcRootEndpoint",
+											"value": "{{AS_DOMAIN}}/oauth2/",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "discoveryEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/discovery",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "registrationEndpoint",
+											"value": "{{RS_DOMAIN_ZUUL}}/registerTPP",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "financialID",
+											"value": "{{ASPSP_FINANCIAL_ID}}",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{TPP}}/payments/exchange_code?code=8789d977-60e4-475a-b6f7-e6e61291be9d&id_token=eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJkZW1vIiwiYXVkaXRUcmFja2luZ0lkIjoiNGE4ODg2ZWUtMDIzMi00OWZmLTg4NGMtN2NhZjVlODA4YTBmLTQ5NzcyIiwiaXNzIjoiaHR0cHM6Ly9hcy5hc3BzcC5kZXYtb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbDo4NDQzL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiI1YTZiMjBhMDMyYTlmYjUzMjFhNzA2ZjMiLCJhY3IiOiJ1cm46b3BlbmJhbmtpbmc6cHNkMjpzY2EiLCJhdWQiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJjX2hhc2giOiJnbGI4cGlYQnRNZXdRY0lUQUZUVVNBIiwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjoiUDU2Zjg5YWVjLTY1NjgtNDM3MC04ZDZiLTFmY2Y3MDBlYTY4NSIsInNfaGFzaCI6Ik1HNHpSNjluTWc5UmpoVnluMzN0SWciLCJhenAiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJhdXRoX3RpbWUiOjE1MTY5Njg2NzAsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTE2OTczNzU5LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTUxNjk3MDE1OX0.hiY0VXoxwi6DTb46q2c1wNQhr4wzfpcc-6_9dskIVRKYWePr1lsSYu7MRNOb9GyBZxt7gfXAdeSuW_UcwoCbRQ&state=5a6b20a032a9fb5321a706f3",
+									"host": [
+										"{{TPP}}"
+									],
+									"path": [
+										"payments",
+										"exchange_code"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "8789d977-60e4-475a-b6f7-e6e61291be9d"
+										},
+										{
+											"key": "id_token",
+											"value": "eyJ0eXAiOiJKV1QiLCJraWQiOiJGb2w3SXBkS2VMWm16S3RDRWdpMUxEaFNJek09IiwiYWxnIjoiRVMyNTYifQ.eyJzdWIiOiJkZW1vIiwiYXVkaXRUcmFja2luZ0lkIjoiNGE4ODg2ZWUtMDIzMi00OWZmLTg4NGMtN2NhZjVlODA4YTBmLTQ5NzcyIiwiaXNzIjoiaHR0cHM6Ly9hcy5hc3BzcC5kZXYtb2IuZm9yZ2Vyb2NrLmZpbmFuY2lhbDo4NDQzL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiI1YTZiMjBhMDMyYTlmYjUzMjFhNzA2ZjMiLCJhY3IiOiJ1cm46b3BlbmJhbmtpbmc6cHNkMjpzY2EiLCJhdWQiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJjX2hhc2giOiJnbGI4cGlYQnRNZXdRY0lUQUZUVVNBIiwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjoiUDU2Zjg5YWVjLTY1NjgtNDM3MC04ZDZiLTFmY2Y3MDBlYTY4NSIsInNfaGFzaCI6Ik1HNHpSNjluTWc5UmpoVnluMzN0SWciLCJhenAiOiI4ZjViYjZmYS05NmIwLTQ2YTMtYWM5ZS0zNmM2MTEwMzYzMjYiLCJhdXRoX3RpbWUiOjE1MTY5Njg2NzAsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTE2OTczNzU5LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTUxNjk3MDE1OX0.hiY0VXoxwi6DTb46q2c1wNQhr4wzfpcc-6_9dskIVRKYWePr1lsSYu7MRNOb9GyBZxt7gfXAdeSuW_UcwoCbRQ"
+										},
+										{
+											"key": "state",
+											"value": "5a6b20a032a9fb5321a706f3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "ASPSP V1.1",
+			"description": "",
+			"item": [
+				{
+					"name": "MTLS",
+					"description": "",
+					"item": [
+						{
+							"name": "test mtls",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{RS}}/mtlsTest",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"mtlsTest"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Account API",
+					"description": "",
+					"item": [
+						{
+							"name": "account",
+							"description": "",
+							"item": [
+								{
+									"name": "Get account",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get balances",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/balances",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"balances"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get transactions",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/transactions",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"transactions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get beneficiaries",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/beneficiaries/",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"beneficiaries",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get direct-debits",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/direct-debits",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"direct-debits"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get product",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/product",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"product"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get standing-orders",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts/22289/standing-orders",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts",
+												"22289",
+												"standing-orders"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "account-request",
+							"description": "",
+							"item": [
+								{
+									"name": "create account request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2018-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2018-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/account-requests",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"account-requests"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get account request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/account-requests/{{AccountRequestId}}",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"account-requests",
+												"{{AccountRequestId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "bulk",
+							"description": "",
+							"item": [
+								{
+									"name": "Get accounts",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get transactions",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/transactions",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"transactions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get balances",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/balances",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"balances"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get beneficiaries",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/beneficiaries",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"beneficiaries"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get direct-debits",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/direct-debits",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"direct-debits"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get products",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/products",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"products"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get standing-orders",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/standing-orders",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"standing-orders"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Payment API",
+					"description": "",
+					"item": [
+						{
+							"name": "Create payment request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"PaymentId\", data.Data.PaymentId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"Initiation\": {\n      \"InstructionIdentification\": \"ACME412\",\n      \"EndToEndIdentification\": \"FRESCO.21302.GFX.20\",\n      \"InstructedAmount\": {\n        \"Amount\": \"165.88\",\n        \"Currency\": \"GBP\"\n      },\n      \"CreditorAccount\": {\n        \"SchemeName\": \"SortCodeAccountNumber\",\n        \"Identification\": \"08080021325698\",\n        \"Name\": \"ACME Inc\",\n        \"SecondaryIdentification\": \"0002\"\n      },\n      \"RemittanceInformation\": {\n        \"Reference\": \"FRESCO-101\",\n        \"Unstructured\": \"Internal ops code 5120101\"\n      }\n    }\n  },\n  \"Risk\": {\n    \"PaymentContextCode\": \"EcommerceGoods\",\n    \"MerchantCategoryCode\": \"5967\",\n    \"MerchantCustomerIdentification\": \"053598653254\",\n    \"DeliveryAddress\": {\n      \"AddressLine\": [\n        \"Flat 7\",\n        \"Acacia Lodge\"\n      ],\n      \"StreetName\": \"Acacia Avenue\",\n      \"BuildingNumber\": \"27\",\n      \"PostCode\": \"GU31 2ZZ\",\n      \"TownName\": \"Sparsholt\",\n      \"CountySubDivision\": [\n        \"Wessex\"\n      ],\n      \"Country\": \"UK\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/payments",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get payment request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f0b9d153-c57e-413c-bc8c-c5dd1ca05a12",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{RS}}/payments/{{PaymentId}}",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"payments",
+										"{{PaymentId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Payment submission",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "32bcd174-11b8-4b3f-b498-572e82126f98",
+										"type": "text/javascript",
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"PaymentSubmissionId\", data.Data.PaymentSubmissionId);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Data\": {\n    \"PaymentId\": \"{{PaymentId}}\",\n    \"Initiation\": {\n      \"InstructionIdentification\": \"ACME412\",\n      \"EndToEndIdentification\": \"FRESCO.21302.GFX.20\",\n      \"InstructedAmount\": {\n        \"Amount\": \"165.88\",\n        \"Currency\": \"GBP\"\n      },\n      \"CreditorAccount\": {\n        \"SchemeName\": \"SortCodeAccountNumber\",\n        \"Identification\": \"08080021325698\",\n        \"Name\": \"ACME Inc\",\n        \"SecondaryIdentification\": \"0002\"\n      },\n      \"RemittanceInformation\": {\n        \"Reference\": \"FRESCO-101\",\n        \"Unstructured\": \"Internal ops code 5120101\"\n      }\n    }\n  },\n  \"Risk\": {\n    \"PaymentContextCode\": \"EcommerceGoods\",\n    \"MerchantCategoryCode\": \"5967\",\n    \"MerchantCustomerIdentification\": \"053598653254\",\n    \"DeliveryAddress\": {\n      \"AddressLine\": [\n        \"Flat 7\",\n        \"Acacia Lodge\"\n      ],\n      \"StreetName\": \"Acacia Avenue\",\n      \"BuildingNumber\": \"27\",\n      \"PostCode\": \"GU31 2ZZ\",\n      \"TownName\": \"Sparsholt\",\n      \"CountySubDivision\": [\n        \"Wessex\"\n      ],\n      \"Country\": \"UK\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "{{RS}}/payment-submissions",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"payment-submissions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Payment submission",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "afa92df7-f1eb-47be-a075-851383fdfffc",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token_with_consent}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-idempotency-key",
+										"value": "FRESCO.21302.GFX.20"
+									},
+									{
+										"key": "x-jws-signature",
+										"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-financial-id",
+										"value": "{{ASPSP_FINANCIAL_ID}}"
+									},
+									{
+										"key": "x-fapi-customer-last-logged-time",
+										"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "104.25.212.99"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "93bac548-d2de-4546-b106-880a5018460d"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{RS}}/payment-submissions/{{PaymentSubmissionId}}",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"payment-submissions",
+										"{{PaymentSubmissionId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Discovery",
+					"description": "",
+					"item": [
+						{
+							"name": "RS discovery",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache, no-store, max-age=0, must-revalidate"
+									},
+									{
+										"key": "Pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "Cookie",
+										"value": "cookiename=werewrw;cook"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{RS}}/discovery",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"discovery"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AS discovery",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache, no-store, max-age=0, must-revalidate"
+									},
+									{
+										"key": "Pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "Cookie",
+										"value": "cookiename=werewrw;cook"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{AS_DOMAIN}}/oauth2/.well-known/openid-configuration",
+									"host": [
+										"{{AS_DOMAIN}}"
+									],
+									"path": [
+										"oauth2",
+										".well-known",
+										"openid-configuration"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Unregister directly with RS",
+					"description": "",
+					"item": [
+						{
+							"name": "Unregister with RS",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache, no-store, max-age=0, must-revalidate"
+									},
+									{
+										"key": "Pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "Cookie",
+										"value": "cookiename=werewrw;cook"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{RS}}/registerTPP",
+									"host": [
+										"{{RS}}"
+									],
+									"path": [
+										"registerTPP"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Examples",
+					"description": "",
+					"item": [
+						{
+							"name": "Example 1: Onboarding",
+							"description": "",
+							"item": [
+								{
+									"name": "test mtls",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Cache-Control",
+												"value": "no-cache, no-store, max-age=0, must-revalidate"
+											},
+											{
+												"key": "Pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "Cookie",
+												"value": "cookiename=werewrw;cook"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{RS}}/mtlsTest",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"mtlsTest"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Curent software statement",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "dd639e1e-2420-4dd1-96ef-e4a41456c4a6",
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"software_statement_id\", data.id);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "{{DIRECTORY}}/api/software-statement/current/",
+											"host": [
+												"{{DIRECTORY}}"
+											],
+											"path": [
+												"api",
+												"software-statement",
+												"current",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Generate SSA",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ebdec299-c1de-45be-a6e3-30aa7270b90a",
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable(\"SSA_JWT\", responseBody);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "{{DIRECTORY}}/api/software-statement/current/ssa",
+											"host": [
+												"{{DIRECTORY}}"
+											],
+											"path": [
+												"api",
+												"software-statement",
+												"current",
+												"ssa"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Generate registration JWT",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "124e72e0-69eb-4226-b009-1624a8c42ca9",
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable('exp',(new Date().getTime() / 1000) + 60*5);",
+													"var SSA_JWT_SERIALISED = \"\\\"\" + pm.variables.get('SSA_JWT') + \"\\\"\";",
+													"console.log(SSA_JWT_SERIALISED);",
+													"postman.setEnvironmentVariable('SSA_JWT_SERIALISED', SSA_JWT_SERIALISED);",
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "7491dc8d-349d-4de2-b6e1-3a3d3ede187a",
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable(\"dynamic_registration_request\", responseBody);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "issuerId",
+												"value": "{{software_statement_id}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"exp\": {{exp}},\n  \"scope\": \"openid accounts payments\",\n  \"redirect_uris\": [\n    \"http://google.fr\"\n  ],\n  \"grant_types\": [\n    \"authorization_code\",\n    \"refresh_token\",\n    \"client_credentials\"\n  ],\n  \"response_types\": [\n    \"code\",\n    \"token\",\n    \"code id_token\"\n  ],\n  \"software_statement\": \"{{SSA_JWT}}\",\n  \"token_endpoint_auth_method\": \"private_key_jwt\",\n  \"token_endpoint_auth_signing_alg\": \"RS256\",\n  \"id_token_signed_response_alg\": \"RS256\",\n  \"id_token_encrypted_response_alg\": \"RSA-OAEP-256\",\n  \"request_object_signing_alg\": \"RS256\",\n  \"request_object_encryption_alg\": \"RSA-OAEP-256\",\n  \"request_object_encryption_enc\": \"A128CBC-HS256\"\n}"
+										},
+										"url": {
+											"raw": "{{JWKMS_DOMAIN}}/api/crypto/signClaims",
+											"host": [
+												"{{JWKMS_DOMAIN}}"
+											],
+											"path": [
+												"api",
+												"crypto",
+												"signClaims"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Dynamic Registration",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "64730813-7ae3-4b7e-a82d-c3d7faef9222",
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable('exp',(new Date().getTime() / 1000) + 60*5);",
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "78fbb5b9-b775-4b74-b911-28c314098f5f",
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"pm.environment.set(\"CLIENT_ID\", data.client_id);",
+													"pm.environment.set(\"CLIENT_SECRET\", data.client_secret);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/jwt"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{{dynamic_registration_request}}"
+										},
+										"url": {
+											"raw": "{{RS}}/registerTPP",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"registerTPP"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "test mtls",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Cache-Control",
+												"value": "no-cache, no-store, max-age=0, must-revalidate"
+											},
+											{
+												"key": "Pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "Cookie",
+												"value": "cookiename=werewrw;cook"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{RS}}/mtlsTest",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"mtlsTest"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Unregister (optional)",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Cache-Control",
+												"value": "no-cache, no-store, max-age=0, must-revalidate"
+											},
+											{
+												"key": "Pragma",
+												"value": "no-cache"
+											},
+											{
+												"key": "Cookie",
+												"value": "cookiename=werewrw;cook"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{RS}}/registerTPP",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"registerTPP"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Example 2: Payment flow",
+							"description": "",
+							"item": [
+								{
+									"name": "Generate client credential JWT",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable('exp',(new Date().getTime() / 1000) + 60*5);",
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable(\"client_credential_jwt\", responseBody);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "issuerId",
+												"value": "{{CLIENT_ID}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"sub\": \"{{CLIENT_ID}}\",\n  \"exp\": {{exp}},\n  \"aud\": \"{{AS_ISSUER_ID}}\"\n}\n"
+										},
+										"url": {
+											"raw": "{{JWKMS_DOMAIN}}/api/crypto/signClaims",
+											"host": [
+												"{{JWKMS_DOMAIN}}"
+											],
+											"path": [
+												"api",
+												"crypto",
+												"signClaims"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Client credential",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"access_token\", data.access_token);",
+													"postman.setEnvironmentVariable(\"id_token\", data.id_token);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "issuerId",
+												"value": "{{CLIENT_ID}}"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "grant_type",
+													"value": "client_credentials",
+													"type": "text"
+												},
+												{
+													"key": "scope",
+													"value": "openid accounts payments",
+													"type": "text"
+												},
+												{
+													"key": "client_assertion_type",
+													"value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+													"type": "text"
+												},
+												{
+													"key": "client_assertion",
+													"value": "{{client_credential_jwt}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{AS_DOMAIN}}/oauth2/realms/root/realms/openbanking/access_token",
+											"host": [
+												"{{AS_DOMAIN}}"
+											],
+											"path": [
+												"oauth2",
+												"realms",
+												"root",
+												"realms",
+												"openbanking",
+												"access_token"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create payment request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"PaymentId\", data.Data.PaymentId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Initiation\": {\n      \"InstructionIdentification\": \"ACME412\",\n      \"EndToEndIdentification\": \"FRESCO.21302.GFX.20\",\n      \"InstructedAmount\": {\n        \"Amount\": \"165.88\",\n        \"Currency\": \"GBP\"\n      },\n      \"CreditorAccount\": {\n        \"SchemeName\": \"SortCodeAccountNumber\",\n        \"Identification\": \"08080021325698\",\n        \"Name\": \"ACME Inc\",\n        \"SecondaryIdentification\": \"0002\"\n      },\n      \"RemittanceInformation\": {\n        \"Reference\": \"FRESCO-101\",\n        \"Unstructured\": \"Internal ops code 5120101\"\n      }\n    }\n  },\n  \"Risk\": {\n    \"PaymentContextCode\": \"EcommerceGoods\",\n    \"MerchantCategoryCode\": \"5967\",\n    \"MerchantCustomerIdentification\": \"053598653254\",\n    \"DeliveryAddress\": {\n      \"AddressLine\": [\n        \"Flat 7\",\n        \"Acacia Lodge\"\n      ],\n      \"StreetName\": \"Acacia Avenue\",\n      \"BuildingNumber\": \"27\",\n      \"PostCode\": \"GU31 2ZZ\",\n      \"TownName\": \"Sparsholt\",\n      \"CountySubDivision\": [\n        \"Wessex\"\n      ],\n      \"Country\": \"UK\"\n    }\n  }\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/payments",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"payments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Generate request parameter",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable('exp',(new Date().getTime() / 1000) + 60*5);",
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable(\"request_parameter\", responseBody);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "jwkUri",
+												"value": "{{AS_JWK_URI}}"
+											},
+											{
+												"key": "issuerId",
+												"value": "{{CLIENT_ID}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"aud\": \"{{AS_ISSUER_ID}}\",\n  \"scope\": \"openid accounts payments\",\n  \"iss\": \"{{CLIENT_ID}}\",\n  \"claims\": {\n    \"id_token\": {\n      \"acr\": {\n        \"value\": \"urn:openbanking:psd2:sca\",\n        \"essential\": true\n      },\n      \"openbanking_intent_id\": {\n        \"value\": \"{{PaymentId}}\",\n        \"essential\": true\n      }\n    },\n    \"userinfo\": {\n      \"openbanking_intent_id\": {\n        \"value\": \"{{PaymentId}}\",\n        \"essential\": true\n      }\n    }\n  },\n  \"response_type\": \"code id_token\",\n  \"redirect_uri\": \"{{CLIENT_REDIRECT_URI}}\",\n  \"state\": \"10d260bf-a7d9-444a-92d9-7b7a5f088208\",\n  \"exp\": {{exp}},\n  \"nonce\": \"10d260bf-a7d9-444a-92d9-7b7a5f088208\",\n  \"client_id\": \"{{CLIENT_ID}}\"\n}"
+										},
+										"url": {
+											"raw": "{{JWKMS_DOMAIN}}/api/crypto/signClaims",
+											"host": [
+												"{{JWKMS_DOMAIN}}"
+											],
+											"path": [
+												"api",
+												"crypto",
+												"signClaims"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Hybrid flow",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable('exp',(new Date().getTime() / 1000) + 60*5);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "jwkUri",
+												"value": "{{AS_JWK_URI}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{AS_AUTHORIZATION}}?response_type=code id_token&client_id={{CLIENT_ID}}&state=10d260bf-a7d9-444a-92d9-7b7a5f088208&nonce=10d260bf-a7d9-444a-92d9-7b7a5f088208&scope=openid payments accounts&redirect_uri={{CLIENT_REDIRECT_URI}}&request={{request_parameter}}",
+											"host": [
+												"{{AS_AUTHORIZATION}}"
+											],
+											"query": [
+												{
+													"key": "response_type",
+													"value": "code id_token"
+												},
+												{
+													"key": "client_id",
+													"value": "{{CLIENT_ID}}"
+												},
+												{
+													"key": "state",
+													"value": "10d260bf-a7d9-444a-92d9-7b7a5f088208"
+												},
+												{
+													"key": "nonce",
+													"value": "10d260bf-a7d9-444a-92d9-7b7a5f088208"
+												},
+												{
+													"key": "scope",
+													"value": "openid payments accounts"
+												},
+												{
+													"key": "redirect_uri",
+													"value": "{{CLIENT_REDIRECT_URI}}"
+												},
+												{
+													"key": "request",
+													"value": "{{request_parameter}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Exchange code",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"access_token_with_consent\", data.access_token);",
+													"postman.setEnvironmentVariable(\"id_token\", data.id_token);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "grant_type",
+													"value": "authorization_code",
+													"type": "text"
+												},
+												{
+													"key": "code",
+													"value": "6b0d8436-ef37-4e01-90d0-625e52f76c42",
+													"type": "text"
+												},
+												{
+													"key": "redirect_uri",
+													"value": "{{CLIENT_REDIRECT_URI}}",
+													"type": "text"
+												},
+												{
+													"key": "client_assertion_type",
+													"value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+													"type": "text"
+												},
+												{
+													"key": "client_assertion",
+													"value": "{{client_credential_jwt}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{AS_DOMAIN}}/oauth2/realms/root/realms/openbanking/access_token",
+											"host": [
+												"{{AS_DOMAIN}}"
+											],
+											"path": [
+												"oauth2",
+												"realms",
+												"root",
+												"realms",
+												"openbanking",
+												"access_token"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Payment submission",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "32bcd174-11b8-4b3f-b498-572e82126f98",
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"PaymentSubmissionId\", data.Data.PaymentSubmissionId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"PaymentId\": \"{{PaymentId}}\",\n    \"Initiation\": {\n      \"InstructionIdentification\": \"ACME412\",\n      \"EndToEndIdentification\": \"FRESCO.21302.GFX.20\",\n      \"InstructedAmount\": {\n        \"Amount\": \"165.88\",\n        \"Currency\": \"GBP\"\n      },\n      \"CreditorAccount\": {\n        \"SchemeName\": \"SortCodeAccountNumber\",\n        \"Identification\": \"08080021325698\",\n        \"Name\": \"ACME Inc\",\n        \"SecondaryIdentification\": \"0002\"\n      },\n      \"RemittanceInformation\": {\n        \"Reference\": \"FRESCO-101\",\n        \"Unstructured\": \"Internal ops code 5120101\"\n      }\n    }\n  },\n  \"Risk\": {\n    \"PaymentContextCode\": \"EcommerceGoods\",\n    \"MerchantCategoryCode\": \"5967\",\n    \"MerchantCustomerIdentification\": \"053598653254\",\n    \"DeliveryAddress\": {\n      \"AddressLine\": [\n        \"Flat 7\",\n        \"Acacia Lodge\"\n      ],\n      \"StreetName\": \"Acacia Avenue\",\n      \"BuildingNumber\": \"27\",\n      \"PostCode\": \"GU31 2ZZ\",\n      \"TownName\": \"Sparsholt\",\n      \"CountySubDivision\": [\n        \"Wessex\"\n      ],\n      \"Country\": \"UK\"\n    }\n  }\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/payment-submissions",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"payment-submissions"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Example 3: Get accounts flow",
+							"description": "",
+							"item": [
+								{
+									"name": "Generate client credential JWT",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable('exp',(new Date().getTime() / 1000) + 60*5);",
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable(\"client_credential_jwt\", responseBody);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "issuerId",
+												"value": "{{CLIENT_ID}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"sub\": \"{{CLIENT_ID}}\",\n  \"exp\": {{exp}},\n  \"aud\": \"{{AS_ISSUER_ID}}\"\n}\n"
+										},
+										"url": {
+											"raw": "{{JWKMS_DOMAIN}}/api/crypto/signClaims",
+											"host": [
+												"{{JWKMS_DOMAIN}}"
+											],
+											"path": [
+												"api",
+												"crypto",
+												"signClaims"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Client credential",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"access_token\", data.access_token);",
+													"postman.setEnvironmentVariable(\"id_token\", data.id_token);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "issuerId",
+												"value": "{{CLIENT_ID}}"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "grant_type",
+													"value": "client_credentials",
+													"type": "text"
+												},
+												{
+													"key": "scope",
+													"value": "openid accounts",
+													"type": "text"
+												},
+												{
+													"key": "client_assertion_type",
+													"value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+													"type": "text"
+												},
+												{
+													"key": "client_assertion",
+													"value": "{{client_credential_jwt}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{AS_DOMAIN}}/oauth2/realms/root/realms/openbanking/access_token",
+											"host": [
+												"{{AS_DOMAIN}}"
+											],
+											"path": [
+												"oauth2",
+												"realms",
+												"root",
+												"realms",
+												"openbanking",
+												"access_token"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create account request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2018-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/account-requests",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"account-requests"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Generate request parameter",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable('exp',(new Date().getTime() / 1000) + 60*5);",
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable(\"request_parameter\", responseBody);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "jwkUri",
+												"value": "{{AS_JWK_URI}}"
+											},
+											{
+												"key": "issuerId",
+												"value": "{{CLIENT_ID}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"aud\": \"{{AS_ISSUER_ID}}\",\n  \"scope\": \"openid accounts\",\n  \"iss\": \"{{CLIENT_ID}}\",\n  \"claims\": {\n    \"id_token\": {\n      \"acr\": {\n        \"value\": \"urn:openbanking:psd2:sca\",\n        \"essential\": true\n      },\n      \"openbanking_intent_id\": {\n        \"value\": \"{{AccountRequestId}}\",\n        \"essential\": true\n      }\n    },\n    \"userinfo\": {\n      \"openbanking_intent_id\": {\n        \"value\": \"{{AccountRequestId}}\",\n        \"essential\": true\n      }\n    }\n  },\n  \"response_type\": \"code id_token\",\n  \"redirect_uri\": \"{{CLIENT_REDIRECT_URI}}\",\n  \"state\": \"10d260bf-a7d9-444a-92d9-7b7a5f088208\",\n  \"exp\": {{exp}},\n  \"nonce\": \"10d260bf-a7d9-444a-92d9-7b7a5f088208\",\n  \"client_id\": \"{{CLIENT_ID}}\"\n}"
+										},
+										"url": {
+											"raw": "{{JWKMS_DOMAIN}}/api/crypto/signClaims",
+											"host": [
+												"{{JWKMS_DOMAIN}}"
+											],
+											"path": [
+												"api",
+												"crypto",
+												"signClaims"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Hybrid flow",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"postman.setEnvironmentVariable('exp',(new Date().getTime() / 1000) + 60*5);",
+													""
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "jwkUri",
+												"value": "{{AS_JWK_URI}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{AS_AUTHORIZATION}}?response_type=code id_token&client_id={{CLIENT_ID}}&state=10d260bf-a7d9-444a-92d9-7b7a5f088208&nonce=10d260bf-a7d9-444a-92d9-7b7a5f088208&scope=openid payments accounts&redirect_uri={{CLIENT_REDIRECT_URI}}&request={{request_parameter}}",
+											"host": [
+												"{{AS_AUTHORIZATION}}"
+											],
+											"query": [
+												{
+													"key": "response_type",
+													"value": "code id_token"
+												},
+												{
+													"key": "client_id",
+													"value": "{{CLIENT_ID}}"
+												},
+												{
+													"key": "state",
+													"value": "10d260bf-a7d9-444a-92d9-7b7a5f088208"
+												},
+												{
+													"key": "nonce",
+													"value": "10d260bf-a7d9-444a-92d9-7b7a5f088208"
+												},
+												{
+													"key": "scope",
+													"value": "openid payments accounts"
+												},
+												{
+													"key": "redirect_uri",
+													"value": "{{CLIENT_REDIRECT_URI}}"
+												},
+												{
+													"key": "request",
+													"value": "{{request_parameter}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Exchange code",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"access_token_with_consent\", data.access_token);",
+													"postman.setEnvironmentVariable(\"id_token\", data.id_token);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "grant_type",
+													"value": "authorization_code",
+													"type": "text"
+												},
+												{
+													"key": "code",
+													"value": "5d87c1cb-d20e-48cc-b754-c6d6361b1dbf",
+													"type": "text"
+												},
+												{
+													"key": "redirect_uri",
+													"value": "{{CLIENT_REDIRECT_URI}}",
+													"type": "text"
+												},
+												{
+													"key": "client_assertion_type",
+													"value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+													"type": "text"
+												},
+												{
+													"key": "client_assertion",
+													"value": "{{client_credential_jwt}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{AS_DOMAIN}}/oauth2/realms/root/realms/openbanking/access_token",
+											"host": [
+												"{{AS_DOMAIN}}"
+											],
+											"path": [
+												"oauth2",
+												"realms",
+												"root",
+												"realms",
+												"openbanking",
+												"access_token"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get accounts",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													"var data = JSON.parse(responseBody);",
+													"",
+													"postman.setEnvironmentVariable(\"AccountRequestId\", data.Data.AccountRequestId);"
+												]
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token_with_consent}}"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "x-idempotency-key",
+												"value": "FRESCO.21302.GFX.20"
+											},
+											{
+												"key": "x-jws-signature",
+												"value": "TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==",
+												"disabled": true
+											},
+											{
+												"key": "x-fapi-financial-id",
+												"value": "{{ASPSP_FINANCIAL_ID}}"
+											},
+											{
+												"key": "x-fapi-customer-last-logged-time",
+												"value": "Sun, 10 Sep 2017 19:43:31 UTC"
+											},
+											{
+												"key": "x-fapi-customer-ip-address",
+												"value": "104.25.212.99"
+											},
+											{
+												"key": "x-fapi-interaction-id",
+												"value": "93bac548-d2de-4546-b106-880a5018460d"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"Data\": {\n    \"Permissions\": [\n      \"ReadAccountsDetail\",\n      \"ReadBalances\",\n      \"ReadBeneficiariesDetail\",\n      \"ReadDirectDebits\",\n      \"ReadProducts\",\n      \"ReadStandingOrdersDetail\",\n      \"ReadTransactionsCredits\",\n      \"ReadTransactionsDebits\",\n      \"ReadTransactionsDetail\"\n    ],\n    \"ExpirationDateTime\": \"2017-05-02T00:00:00+00:00\",\n    \"TransactionFromDateTime\": \"2017-05-03T00:00:00+00:00\",\n    \"TransactionToDateTime\": \"2017-12-03T00:00:00+00:00\"\n  },\n  \"Risk\": {}\n}"
+										},
+										"url": {
+											"raw": "{{RS}}/accounts",
+											"host": [
+												"{{RS}}"
+											],
+											"path": [
+												"accounts"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "DIRECTORY",
+			"description": "",
+			"item": [
+				{
+					"name": "Test MTLS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{DIRECTORY}}/api/matls/test",
+							"host": [
+								"{{DIRECTORY}}"
+							],
+							"path": [
+								"api",
+								"matls",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Curent software statement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dd639e1e-2420-4dd1-96ef-e4a41456c4a6",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"software_statement_id\", data.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{DIRECTORY}}/api/software-statement/current/",
+							"host": [
+								"{{DIRECTORY}}"
+							],
+							"path": [
+								"api",
+								"software-statement",
+								"current",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate SSA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ebdec299-c1de-45be-a6e3-30aa7270b90a",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"SSA_JWT\", responseBody);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{DIRECTORY}}/api/software-statement/current/ssa",
+							"host": [
+								"{{DIRECTORY}}"
+							],
+							"path": [
+								"api",
+								"software-statement",
+								"current",
+								"ssa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JWKMS",
+			"description": "",
+			"item": [
+				{
+					"name": "Test MTLS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/mtls/test",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"mtls",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read application",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/application",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read jwk_uri",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/jwk_uri/5b8cca85-1870-4536-a016-4f26bbeae742",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"jwk_uri",
+								"5b8cca85-1870-4536-a016-4f26bbeae742"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign claims",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sub\": \"1234567890\",\n  \"name\": \"John Doe\",\n  \"admin\": true\n}"
+						},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/signClaims",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"signClaims"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign and encrypt claims",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "jwkUri",
+								"value": "{{AS_JWK_URI}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sub\": \"1234567890\",\n  \"name\": \"John Doe\",\n  \"admin\": true\n}"
+						},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/signAndEncryptClaims",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"signAndEncryptClaims"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Decrypt",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiUlNBMV81In0.IDGjjrbH7IM1QNPoCGlCLBVz8f9pkUoOyScJm3PcDiAS6etfSiY-rcYxXp8IwxnGVS-YmQommZqas1Vx7EppOW8cWhBapNaJDuT8WNM7RKhAaTUIH0FmqqHs39g07O9kvg0PoqKGhSluemRf6SSCCvOa6JwBUOx_5dhR7jjyc32oV5N0QfYWJHeohCbDdnK1UV_UxYvOYYzqQMwgV7ivJ58N4Szl4FNlrlUdaKJfLgpxD_VuLYuLvlzTP2uI2BiAgtdyhq8UrqvxX_g0yMMXCItUAGAe1vkOenZBQZdLqVK7nmpWguWHzYTu4pw17NROstmkPg_bjnIkvBHopACiKw.sKcU3St6Tve_oPHYOEetnQ.0au9jLuo65N5O7IN69nKn4SAgx4WNO7Xd1v8fIHIVx2cv9UEHUfKKiGqYg821LdFdH5TC_vlHircIpq4oVyEMV4bFGdFJn05JLJQ8T30ka5ak32o8tgxtSZBpmwRea6_uhhKh3l6pEnSxmKZft7eBt5XdEzHfxhJK8o9zjzzoyTmabUE1HKmNDGjqY-opHGlfC5bzMfz-xfAjKf_dO3V3MuvjsC55EXt-OJHlIXXsKmK7zL7_iCmjZyI0dsyfdr3Lfc4_ZZfixs9M9Nh6u0EkT3OVhn_gXiHYlQJWdAMe2nRR-ujKYe6Adoaxdo3ipVL.G5-TGIlffv1So1faQW7r_g"
+						},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/decryptJwe",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"decryptJwe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "eyJraWQiOiIxY2U0NmU4My05M2NhLTRhYjEtYWU4NC1iYTRkOGUxNTVlZGQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaXNzIjoiNWFlMDQ5ZWY3ZTlhNzAyMjI5NzE0MWNhIiwiYWRtaW4iOnRydWUsImlhdCI6MTUyNDY0OTAzMiwianRpIjoiZTY4MDM3N2UtMWIxYi00M2VjLWFkN2EtMmE3ZmIzY2JkOWIzIn0.JSRUTmxtkKlHoSlXbUSNM-L7HYnzX93Tkhe3zLEr4p4OeBVGPF8coql6BEv8hGPa0XviG473JX8mFQSIpWH-yIr12N20CwnCzPQy0uqNPvBDM-mqjvFyYeV7AFN6Sqfi7LXCGd26N0ikIFbn9O1sfuhia0Sq5Ts1ZEWnS1VoOqcvmwY2QoLS6XO94bF5gW2kdPcy1lqH2A6QJHEOdRwLnDtjZVP9p0sHgnJvG1ogiIUftsrmUQj18lpc_Mw_HnZaAxCLCHG_jiQpQdvQc5uC4qq3uYR99lvG0lkmqHmOqtQ1yOymQJpvVSmgUufYENFur9_hjTF9rBL1M05UiH0uaA"
+						},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/validateJws",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"validateJws"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rotate keys",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/rotateSigningAndEncryptionKeys",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"rotateSigningAndEncryptionKeys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset keys",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/resetSigningAndEncryptionKeys",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"resetSigningAndEncryptionKeys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rotate transport keys",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/rotateTransportKeys",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"rotateTransportKeys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset transport keys",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{JWKMS_DOMAIN}}/api/crypto/resetTransportKeys",
+							"host": [
+								"{{JWKMS_DOMAIN}}"
+							],
+							"path": [
+								"api",
+								"crypto",
+								"resetTransportKeys"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
