@@ -36,6 +36,10 @@ You need to get the code locally for the git project repo. For this, you need to
 - Download the latest intellij version (ultimate)
 - Open the project with intellij (you will need to open it as an existing maven project)
 - Install mongod if you don't have it already. There is plenty of doc online for this. We recommend using brew
+  __**note:**__ You can use the embedded version of mongodb by commenting out the following line in [application.yml](src/main/resources/application.yml)
+  ```
+  #exclude: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
+  ```
 - You will need later to run mongod in background. Either do it in console before working or setup an external tool 
 
 In intellij so you can run it from intellij (tips: [https://stackoverflow.com/questions/33595827/is-there-a-way-of-running-mongod-from-webstorm-mac](https://stackoverflow.com/questions/33595827/is-there-a-way-of-running-mongod-from-webstorm-mac))

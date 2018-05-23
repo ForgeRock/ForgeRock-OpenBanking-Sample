@@ -24,6 +24,8 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
 
 logging:
   level:
