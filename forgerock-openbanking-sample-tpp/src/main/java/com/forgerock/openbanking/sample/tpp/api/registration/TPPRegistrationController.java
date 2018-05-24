@@ -185,8 +185,7 @@ public class TPPRegistrationController implements TPPRegistration {
                 OIDCConstants.GrantType.REFRESH_TOKEN,
                 OIDCConstants.GrantType.CLIENT_CREDENTIAL));
 
-        oidcRegistrationRequest.setResponseTypes(Arrays.asList(OIDCConstants.ResponseType.CODE,
-                OIDCConstants.ResponseType.TOKEN,
+        oidcRegistrationRequest.setResponseTypes(Arrays.asList(
                 OIDCConstants.ResponseType.CODE + " " + OIDCConstants.ResponseType.ID_TOKEN));
         oidcRegistrationRequest.setApplicationType(OpenBankingConstants.RegistrationTppRequestClaims.APPLICATION_TYPE_WEB);
 

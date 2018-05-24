@@ -2337,7 +2337,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"exp\": {{exp}},\n  \"scope\": \"openid accounts payments\",\n  \"redirect_uris\": [\n    \"http://google.fr\"\n  ],\n  \"grant_types\": [\n    \"authorization_code\",\n    \"refresh_token\",\n    \"client_credentials\"\n  ],\n  \"response_types\": [\n    \"code\",\n    \"token\",\n    \"code id_token\"\n  ],\n  \"software_statement\": \"{{SSA_JWT}}\",\n  \"token_endpoint_auth_method\": \"private_key_jwt\",\n  \"token_endpoint_auth_signing_alg\": \"RS256\",\n  \"id_token_signed_response_alg\": \"RS256\",\n  \"id_token_encrypted_response_alg\": \"RSA-OAEP-256\",\n  \"request_object_signing_alg\": \"RS256\",\n  \"request_object_encryption_alg\": \"RSA-OAEP-256\",\n  \"request_object_encryption_enc\": \"A128CBC-HS256\"\n}"
+											"raw": "{\n  \"exp\": {{exp}},\n  \"scope\": \"openid accounts payments\",\n  \"redirect_uris\": [\n    \"http://google.fr\"\n  ],\n  \"grant_types\": [\n    \"authorization_code\",\n    \"refresh_token\",\n    \"client_credentials\"\n  ],\n  \"response_types\": [\n    \"code id_token\"\n  ],\n  \"software_statement\": \"{{SSA_JWT}}\",\n  \"token_endpoint_auth_method\": \"private_key_jwt\",\n  \"token_endpoint_auth_signing_alg\": \"RS256\",\n  \"id_token_signed_response_alg\": \"RS256\",\n  \"id_token_encrypted_response_alg\": \"RSA-OAEP-256\",\n  \"request_object_signing_alg\": \"RS256\",\n  \"request_object_encryption_alg\": \"RSA-OAEP-256\",\n  \"request_object_encryption_enc\": \"A128CBC-HS256\"\n}"
 										},
 										"url": {
 											"raw": "{{JWKMS_DOMAIN}}/api/crypto/signClaims",

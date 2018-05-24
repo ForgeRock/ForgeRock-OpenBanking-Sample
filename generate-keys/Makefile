@@ -120,7 +120,7 @@ create-tpp-truststore:
 	    -keystore $(TRUSTORE_TPP) -storepass $(PASSWORD) -deststoretype pkcs12
 
 	# Import MIT OB certificate into truststore
-	keytool -import -alias $(OB_ROOT_MIT_CA_ALIAS) -file $(OB_ROOT_MIT_CA_PATH) -keystore $(TRUSTORE_TPP)
+	keytool -noprompt -import -alias $(OB_ROOT_MIT_CA_ALIAS) -file $(OB_ROOT_MIT_CA_PATH) -keystore $(TRUSTORE_TPP) -storepass changeit
 #Function to generate a key and export it in all the format you may need.
 define generate_csr
 	$(eval ALIAS=$(1))

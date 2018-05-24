@@ -46,9 +46,17 @@ You will need to create some new hostnames for the application.
 127.0.0.1		tpp.sample.ob.forgerock.financial redirect.tpp.sample.ob.forgerock.financial tpp.ob.forgerock.financial
 ```
 
-### Register your TPP with the Open Banking directory
+### Register your TPP with the ForgeRock directory
 
-We pre-registered a TPP for you. If you want to use the one provided by ForgeRock, you can skip this step.
+ForgeRock directory manage keys for you and expose the jwkms, a service for generated JWTs.
+
+What you need to do:
+- create a new software statement into ForgeRock directory
+- download your transport key
+- Setup postman to use your transport keys for the jwkms, directory and ASPSP
+- run the collections ASPSP V1.1 > Examples > Example 1: Onboarding
+
+### Register your TPP with the Open Banking directory
 
 We implemented a script which will allow you to generate keys, ready to go, that you can import to Open Banking directory.
 What you need to do:
