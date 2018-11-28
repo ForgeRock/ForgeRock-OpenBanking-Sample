@@ -56,6 +56,8 @@ What you need to do:
 - Setup postman to use your transport keys for the jwkms, directory and ASPSP
 - run the collections ASPSP V1.1 > Examples > Example 1: Onboarding
 
+For some extra reading around this check out https://docs.ob.forgerock.financial/
+
 ### Register your TPP with the Open Banking directory
 
 We implemented a script which will allow you to generate keys, ready to go, that you can import to Open Banking directory.
