@@ -15,7 +15,7 @@
 -->
 # Open Banking Reference Implementation Sample
 
-Code sample for helping TPPs and ASPSP using the ForgeRock Open Banking reference implementation platform. For help find us on the openbanking slack channel https://open-banking-global.slack.com/archives/CBB3PBYDC
+Code sample for helping TPPs and ASPSP using the ForgeRock Open Banking reference implementation platform. For help find us on the openbanking slack channel `forgerock_support` https://open-banking-global.slack.com/archives/CBB3PBYDC
 
 ## Licence
 License:	CDDLv1.0 \
