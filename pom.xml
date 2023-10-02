@@ -215,7 +215,7 @@
         </repository>
         <repository>
             <id>forgerock-community-releases</id>
-            <url>http://maven.forgerock.org:80/repo/community</url>
+            <url>http://maven.forgerock.org:80/artifactory/community</url>
             <releases>
                 <enabled>true</enabled>
                 <checksumPolicy>fail</checksumPolicy>
